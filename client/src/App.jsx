@@ -1,9 +1,14 @@
 import React from 'react'
+import Mainrouter from './appRoute/Mainrouter'
+import Navbar from './Common/Navbar'
+import Footer from './Common/Footer'
 
 const App = () => {
   return (
     <div>
-      <h1>This is Maine Page</h1>
+      <Navbar />
+      <Mainrouter />
+      <Footer />
     </div>
   )
 }
