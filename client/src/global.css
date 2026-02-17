@@ -1,0 +1,32 @@
+@reference "tailwindcss";
+
+@layer base {
+  .routemein {
+    @apply py-4 md:py-12 lg:py-16 px-5 md:px-15 lg:px-20 w-full;
+  }
+  .main {
+    @apply flex flex-col justify-center items-center w-full gap-8 sm:gap-10 md:gap-12 lg:gap-14;
+  }
+  .main2 {
+    @apply flex flex-col lg:flex-row justify-center items-center w-full gap-8 sm:gap-10 md:gap-12 lg:gap-14;
+  }
+}
+
+
+@layer components{
+  .mainHeading{
+    @apply text-[16px] md:text-[24px] xl:text-[32px]  tracking-wide  font-bold block w-full;
+  }
+
+  .subHeading{
+    @apply text-[8px] md:text-[16px]  tracking-widest uppercase font-bold block w-full  font-serif;
+  }
+
+  .paragraph{
+    @apply text-[8px] md:text-[16px]  tracking-widest font-bold block w-full font-serif leading-relaxed text-center text-gray-400;
+  }
+
+  .title{
+    @apply text-[16px] md:text-[24px] font-bold text-center tracking-widest block w-full;
+  }
+}
