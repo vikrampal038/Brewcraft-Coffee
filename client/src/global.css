@@ -10,13 +10,13 @@
 
 @layer components {
   .routemein {
-    @apply py-4 md:py-12 lg:py-16 px-[24px] 2xl:px-[296px] w-full;
+    @apply py-24 px-[24px] lg:px-[160px] w-full;
   }
   .main {
-    @apply flex flex-col justify-center items-center w-full gap-8 sm:gap-10 md:gap-12 lg:gap-14;
+    @apply flex flex-col justify-center items-center w-7xl gap-8 sm:gap-10 md:gap-12 lg:gap-14;
   }
   .main2 {
-    @apply flex flex-col lg:flex-row justify-center items-center w-full gap-8 sm:gap-10 md:gap-12 lg:gap-14;
+    @apply flex flex-col lg:flex-row justify-center w-7xl items-center gap-8 sm:gap-10 md:gap-12 lg:gap-14;
   }
   .mainHeading {
     @apply text-[36px] text-[#3D2B1F]  tracking-wide  font-bold block w-full;
@@ -32,5 +32,11 @@
 
   .title {
     @apply text-[18px]  font-bold text-[#3D2B1F]  text-center lg:text-start block w-full;
+  }
+  .label{
+    @apply text-[12px] font-bold tracking-wider text-[#A68966] uppercase
+  }
+  .input {
+    @apply w-full bg-white/5 rounded-lg border text-white border-white/10 px-4 py-3 focus-ring-[#8B5E3C] focus-border-[#8B5E3C] text-sm outline-none transition-all
   }
 }

@@ -9,27 +9,36 @@ import Touch from "../Components/Home/Touch";
 const Home = () => {
   return (
     <div className="bg-[#FDFCF8] w-full overflow-x:hidden">
-      <section className="routemein" >
+      <section className="routemein">
         <HomeHero />
       </section>
 
-      <section className="routemein" >
+      <section className="routemein">
         <SingleOrigin />
       </section>
 
-      <section className="routemein bg-[#F9F7F2]" >
+      <section className="routemein bg-[#F9F7F2]">
         <Premium />
       </section>
 
-      <section className="routemein" >
+      <section className="routemein">
         <Roster />
       </section>
 
-      <section className="routemein bg-red-950" >
-        <Reserve />
+      <section
+        className="routemein  h-screen relative bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: "url('/src/Assets/cafeInterrior.jpg')" }}
+      >
+        {/* overlay */}
+        <div className="absolute inset-0 bg-[#3D2B1F]/70"></div>
+
+        {/* content */}
+        <div className="relative z-10">
+          <Reserve />
+        </div>
       </section>
 
-      <section className="routemein" >
+      <section className="routemein">
         <Touch />
       </section>
     </div>
