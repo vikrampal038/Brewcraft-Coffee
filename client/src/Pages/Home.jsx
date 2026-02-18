@@ -8,7 +8,7 @@ import Touch from "../Components/Home/Touch";
 
 const Home = () => {
   return (
-    <div className="bg-[#FDFCF8] w-full">
+    <div className="bg-[#FDFCF8] w-full overflow-x:hidden">
       <section className="routemein" >
         <HomeHero />
       </section>

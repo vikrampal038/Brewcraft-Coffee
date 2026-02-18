@@ -1,8 +1,16 @@
 @reference "tailwindcss";
 
-@layer base {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @layer base {
+
+} */
+
+@layer components {
   .routemein {
-    @apply py-4 md:py-12 lg:py-16 px-5 md:px-15 lg:px-20 w-full;
+    @apply py-4 md:py-12 lg:py-16 px-[24px] 2xl:px-[296px] w-full;
   }
   .main {
     @apply flex flex-col justify-center items-center w-full gap-8 sm:gap-10 md:gap-12 lg:gap-14;
@@ -10,23 +18,19 @@
   .main2 {
     @apply flex flex-col lg:flex-row justify-center items-center w-full gap-8 sm:gap-10 md:gap-12 lg:gap-14;
   }
-}
-
-
-@layer components{
-  .mainHeading{
-    @apply text-[16px] md:text-[24px] xl:text-[32px]  tracking-wide  font-bold block w-full;
+  .mainHeading {
+    @apply text-[36px] text-[#3D2B1F]  tracking-wide  font-bold block w-full;
   }
 
-  .subHeading{
-    @apply text-[8px] md:text-[16px]  tracking-widest uppercase font-bold block w-full  font-serif;
+  .subHeading {
+    @apply text-[0.76rem] text-[#8B5E3C]  tracking-widest uppercase font-bold block w-full  font-serif;
   }
 
-  .paragraph{
-    @apply text-[8px] md:text-[16px]  tracking-widest font-bold block w-full font-serif leading-relaxed text-center text-gray-400;
+  .paragraph {
+    @apply text-[14px] font-medium block w-full leading-relaxed  text-center lg:text-start  text-gray-400;
   }
 
-  .title{
-    @apply text-[16px] md:text-[24px] font-bold text-center tracking-widest block w-full;
+  .title {
+    @apply text-[18px]  font-bold text-[#3D2B1F]  text-center lg:text-start block w-full;
   }
 }
