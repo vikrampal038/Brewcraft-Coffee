@@ -13,7 +13,7 @@ const Roster = () => {
           </div>
           {/* subHeading and Button part */}
           <div className="w-full flex flex-col sm:flex-row items-end-safe sm:justify-between sm:items-center gap-3">
-            <h2 className="mainHeading font-sans w-full sm:w-1/2 font-serif">Signature Coffees</h2>
+            <h2 className="mainHeading w-full sm:w-1/2 font-serif">Signature Coffees</h2>
             <a
               href="#"
               className="px-4 py-1.5 xl:px-6 xl:py-3 border rounded-full bg-transparent border-[#8B5E3C] text-[#8B5E3C] font-bold hover:bg-[#8B5E3C] text-end hover:text-white transition-all duration-700 ease-in-out ">
@@ -23,7 +23,7 @@ const Roster = () => {
         </div>
 
         {/* Maine Contain */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4   justify-center items-center gap-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-8 w-full">
           {RosterData.map((item, index) => {
             return (
               <div key={index} className="group">

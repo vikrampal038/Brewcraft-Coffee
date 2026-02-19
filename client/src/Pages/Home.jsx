@@ -8,12 +8,12 @@ import Touch from "../Components/Home/Touch";
 
 const Home = () => {
   return (
-    <div className="bg-[#FDFCF8] w-full overflow-x:hidden">
-      <section className="routemein">
+    <div className="bg-[#FDFCF8] w-full">
+      <section>
         <HomeHero />
       </section>
 
-      <section className="routemein">
+      <section>
         <SingleOrigin />
       </section>
 
@@ -26,7 +26,7 @@ const Home = () => {
       </section>
 
       <section
-        className="routemein  h-screen relative bg-cover bg-center bg-fixed"
+        className="routemein h-260  sm:h-190 lg:h-200 relative bg-cover bg-center bg-fixed"
         style={{ backgroundImage: "url('/src/Assets/cafeInterrior.jpg')" }}
       >
         {/* overlay */}
