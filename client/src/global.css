@@ -3,7 +3,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
 
 @layer components {
   .routemein {
@@ -12,12 +11,12 @@
   .main {
     @apply flex flex-col justify-center items-center w-full max-w-7xl gap-8 sm:gap-10 md:gap-12 lg:gap-14;
   }
-  .mainHeading { 
+  .mainHeading {
     @apply text-[22px] lg:text-[36px] text-[#3D2B1F]  tracking-wide   font-bold block w-full;
   }
 
   .subHeading {
-    @apply text-[0.76rem] text-[#8B5E3C]  tracking-widest uppercase font-bold block w-full  font-serif;
+    @apply text-[0.76rem] text-[#8B5E3C]  tracking-widest uppercase font-bold block w-full font-serif;
   }
 
   .paragraph {
@@ -27,10 +26,58 @@
   .title {
     @apply text-[18px]  font-bold text-[#3D2B1F]  text-center lg:text-start block w-full;
   }
-  .label{
-    @apply text-[14px] font-bold tracking-wider text-[#A68966] uppercase
+  .label {
+    @apply text-[14px] font-bold tracking-wider text-[#A68966] uppercase;
   }
   .input {
-    @apply w-full bg-white/5 rounded-lg border text-white border-white/10 px-4 py-3 focus:ring-[#8B5E3C] focus:border-[#8B5E3C] text-sm outline-none transition-all
+    @apply w-full bg-white/5 rounded-lg border text-white border-white/10 px-4 py-3 focus:ring-[#8B5E3C] focus:border-[#8B5E3C] text-sm outline-none transition-all;
+  }
+}
+
+@layer utilities {
+  .cart-shadow {
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  .cart {
+    transition: box-shadow 0.7s ease-in-out;
+  }
+
+  .cart:hover {
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+
+  .cart2 {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .cart2:hover {
+    box-shadow:
+      rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  }
+
+  .normal-shadow {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .normal-shadow:hover {
+    box-shadow:
+      rgba(255, 255, 255, 0.678) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
+
+  .text-shadow-pro {
+    transition: text-shadow 0.7s ease-in-out;
+  }
+  .text-shadow-pro:hover {
+    text-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.25),
+      0 6px 12px rgba(0, 0, 0, 0.25),
+      0 12px 24px rgba(0, 0, 0, 0.15);
   }
 }

@@ -4,8 +4,8 @@ import { FaUsers } from "react-icons/fa";
 
 const Reserve = () => {
   return (
-    <section className="flex justify-center items-center w-full">
-      <div className="main flex justify-center items-start gap-8 w-full border">
+    <section className="routemein">
+      <div className="main gap-8">
         {/* Heading section */}
         <div className="flex flex-col justify-center items-start w-full gap-2 ">
           <h1 className="subHeading text-[#C68F5D] font-sans">
@@ -14,7 +14,7 @@ const Reserve = () => {
           <h2 className="mainHeading text-white font-serif xl:text-[48px]">
             Secure Your <span className="text-[#C68F5D] italic">Quiet Corner</span>
           </h2>
-          <p className="paragraph w-full lg:w-1/2 sm:text-start font-sans text-[16px]">
+          <p className="paragraph w-full lg:w-150 text-start font-sans text-[16px]">
             Whether it's a focused morning session or a slow weekend brunch,
             we'll have your favorite table waiting for you.
           </p>
@@ -26,7 +26,7 @@ const Reserve = () => {
             {/* For Name */}
             <div className="space-y-2  flex flex-col gap-1">
               <label htmlFor="name" className="label">
-                Date
+                Name
               </label>
               <input type="text" name="name" id="name" placeholder="Your Name" className="input" />
             </div>
@@ -34,7 +34,7 @@ const Reserve = () => {
             {/* For Phone */}
             <div className="space-y-2 flex flex-col gap-1">
               <label htmlFor="phone" className="label">
-                Time
+                Mobile Number
               </label>
               <input type="tel" name="phone" id="phone" max="10" min="10" placeholder="Your Phone Number" className="input"/>
             </div>
@@ -83,18 +83,13 @@ const Reserve = () => {
                 min="1"
                 max="10"
                 placeholder="Number of Guest"
-                className="
-        w-full bg-transparent
-        outline-none border-none
-        focus:outline-none focus:ring-0
-      "
+                className=" w-full bg-transparent outline-none border-none focus:outline-none focus:ring-0"
               />
             </div>
           </div>
 
           {/* Submit Button */}
-          
-          <button type="submit" className="w-full py-4 rounded-lg text-white bg-[#8B5E3C] hover:bg-[#C68F5D] transition-all font-bold shadow-xl shadow-black/40">Confirm Reservation</button>
+          <button type="submit" className="w-full py-4 rounded-lg text-white bg-[#8B5E3C] hover:bg-[#C68F5D] transition-all duration-700 ease-in-out font-bold shadow-xl shadow-black/40">Confirm Reservation</button>
         </form>
         {/* description section */}
         <p className="paragraph font-sans text-start text-gray-200">

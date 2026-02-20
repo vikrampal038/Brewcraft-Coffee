@@ -3,7 +3,7 @@ import { PremiumData } from "../../Data/HomeData";
 
 const Primium = () => {
   return (
-    <section className="flex justify-center items-center ">
+    <section className="routemein">
       <div className="main">
         {/* Heading Part */}
         <div className="flex flex-col justify-items-center">
