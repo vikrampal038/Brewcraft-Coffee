@@ -1,11 +1,10 @@
 import React from "react";
 import { FaUsers } from "react-icons/fa";
-// import cafeInterrior from "../../../public/Assets/cafeInterrior.jpg";
 
 const Reserve = () => {
   return (
     <section className="routemein">
-      <div className="main gap-8">
+      <div className="flex flex-col  gap-7.5">
         {/* Heading section */}
         <div className="flex flex-col justify-center items-start w-full gap-2 ">
           <h1 className="subHeading text-[#C68F5D] font-sans">
@@ -20,7 +19,7 @@ const Reserve = () => {
           </p>
         </div>
         {/* Form section */}
-        <form className="space-y-6 text-white w-200 w-full">
+        <form className="space-y-6 text-white w-200">
           {/* For Name and Number */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* For Name */}

@@ -7,10 +7,18 @@ const SingleOrigin = () => {
   return (
     <section className="routemein ">
       <div className="main">
-        <div className="grid gird-cols-1 lg:grid-cols-2 justify-center items-center gap-14 w-full">
+        <div className="grid gird-cols-1 lg:grid-cols-2 justify-center items-center gap-25 w-full">
           {/* Image Part */}
-          <div className="order-2 lg:order-1 flex flex-col justify-items-center w-full">
-              <img src="/public/BrandName.jpg" alt="singleOrigin Image" className="h-150 w-100"/>
+          <div className="order-2 lg:order-1 relative w-full rounded-2xl">
+              <img src="/src/Assets/singleOriginImg.jpg" alt="singleOrigin Image" className="h-[512px] w-full rounded-2xl shadow-2xl"/>
+              <div className="absolute inset-0 bg-[#C68F5D]/25"></div>
+              <div className="absolute bg-white -bottom-8 -right-8 rounded-2xl p-8 shadow-xl w-95 border border-[#A68966]/10 hidden md:block ">
+                <p className="title italic text-[#8B5E3C] font-serif leading-relaxed">"Sustainability is not a choice, it's our core identity."</p>
+                <div className="mt-4 flex items-center gap-3">
+                  <div className="h-[2px] w-8 bg-[#C68F5D]"></div>
+                  <p className="title tracking-widest text-[#3D2B1F] uppercase text-[12px] font-sans">Our Founding Principle</p>
+                </div>
+              </div>
           </div>
 
           <div className="order-1 lg:order-2 flex flex-col items-start gap-8 w-full">

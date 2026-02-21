@@ -30,21 +30,15 @@ const Home = () => {
       </section>
       <section
         className="routemein h-260  sm:h-190 lg:h-200 relative bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: "url('/src/Assets/cafeInterrior.jpg')" }}
+        // style={{ backgroundImage: "url('/src/Assets/cafeInterrior.jpg')" }}
+        style={{ backgroundImage: "url('/src/Assets/reservationbgImg.jpg')" }}
       >
         {/* overlay */}
-        <div className="absolute inset-0 bg-[#3D2B1F]/65"></div>
+        <div className="absolute inset-0   bg-[#3D2B1F]/75"></div>
 
         {/* content */}
         <div className="relative z-10">
           <Reserve />
-        </div>
-        <div className="border-2 cart-shadow cart hidden lg:block border-[#8B5E3C] absolute right-10 top-10  bg-[#c6905d7e] rounded-[50%]">
-          <img
-            alt="logoImage"
-            src="/public/BrewCoffee.png"
-            className="h-25 w-25 rounded-full shadow-2xs object-cover"
-          />
         </div>
       </section>
       <section className="bg-[#F9F7F2]">
