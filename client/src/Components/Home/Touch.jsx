@@ -5,7 +5,7 @@ import { SlLocationPin } from "react-icons/sl";
 
 const Touch = () => {
   return (
-    <section className="routemein ">
+    <section className="routemein bg-[#F9F7F2] ">
       <div className="main">
         <div className="flex flex-col lg:flex-row justify-center items-start gap-20 w-full">
           {/* address Details */}

@@ -3,7 +3,7 @@ import { PremiumData } from "../../Data/HomeData";
 
 const Primium = () => {
   return (
-    <section className="routemein">
+    <section className="routemein bg-[#F9F7F2]">
       <div className="main">
         {/* Heading Part */}
         <div className="flex flex-col justify-items-center">

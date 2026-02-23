@@ -3,7 +3,7 @@ import { RosterData } from "../../Data/HomeData";
 
 const Roster = () => {
   return (
-    <section className="routemein">
+    <section className="routemein bg-[#FDFCF8]">
       <div className="main">
         {/* Heading Part */}
         <div className="flex flex-col  justify-center items-start w-full">

@@ -3,12 +3,19 @@ import { FaUsers, FaUserAlt, FaPhoneAlt } from "react-icons/fa";
 import { BsCalendar2DateFill } from "react-icons/bs";
 import { IoTimeSharp } from "react-icons/io5";
 
+
 const Reserve = () => {
   return (
-    <section className="routemein relative h-screen overflow-hidden bg-fixed bg-cover bg-center"
-      style={{ backgroundImage: "url('/src/Assets/reservationbgImg.jpg')" }}>
-      <div className="absolute inset-0   bg-[#3D2B1F]/85"></div>
-      <div className="flex flex-col gap-7.5 relative z-10 w-full lg:w-200">
+    <section className="routemein relative h-screen overflow-hidden">
+      <div className="absolute inset-0 z-0 h-260  sm:h-190 lg:h-200 bg-cover bg-center bg-fixed">
+        <img
+          alt="Brewcrafe-coffee Image"
+          className="h-full w-full object-cover brightness-35"
+          src="/src/Assets/reservationbgImg.jpg"
+        />
+      </div>
+      {/* <div className="absolute inset-0   bg-[#3D2B1F]/75"></div> */}
+      <div className="flex flex-col gap-7.5 relative z-10">
         {/* Heading section */}
         <div className="flex flex-col justify-center items-start w-full gap-2 ">
           <h1 className="subHeading text-[#C68F5D] font-sans">
@@ -24,7 +31,7 @@ const Reserve = () => {
           </p>
         </div>
         {/* Form section */}
-        <form className="space-y-6 text-white w-full">
+        <form className="space-y-6 text-white w-200">
           {/* For Name and Number */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* For Name */}
@@ -34,7 +41,7 @@ const Reserve = () => {
               </label>
 
               <div className="flex input items-center gap-4 w-full ">
-                <FaUserAlt className="text-gray-200 text-lg" />
+                < FaUserAlt className="text-gray-200 text-lg" />
                 <input
                   type="tel"
                   name="phone"
