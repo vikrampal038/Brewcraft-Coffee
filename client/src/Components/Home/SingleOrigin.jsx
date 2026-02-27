@@ -12,8 +12,8 @@ const SingleOrigin = () => {
           <div className="order-2 lg:order-1 relative w-full rounded-2xl">
               <img src="/src/Assets/singleOriginImg.jpg" alt="singleOrigin Image" className="h-[512px] w-full rounded-2xl shadow-2xl"/>
               <div className="absolute inset-0 bg-[#C68F5D]/25"></div>
-              <div className="absolute bg-white -bottom-8 md:-right-4 lg:-right-8   rounded-2xl p-8 shadow-xl w-95 border border-[#A68966]/10 hidden md:block ">
-                <p className="title italic text-[#8B5E3C] font-serif leading-relaxed">"Sustainability is not a choice, it's our core identity."</p>
+              <div className="absolute bg-white -bottom-8 md:-right-4 lg:-right-12   rounded-2xl p-8 shadow-xl w-95 border border-[#A68966]/10 hidden md:block ">
+                <p className="title italic text-[#8B5E3C] font-serif leading-relaxed tracking-wider">"Sustainability is not a choice, it's our core identity."</p>
                 <div className="mt-4 flex items-center gap-3">
                   <div className="h-[2px] w-8 bg-[#C68F5D]"></div>
                   <p className="title tracking-widest text-[#3D2B1F] uppercase text-[12px] font-sans">Our Founding Principle</p>

@@ -123,7 +123,7 @@ const Reserve = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-4 rounded-lg text-white bg-[#8B5E3C] hover:bg-[#C68F5D] transition-all duration-700 ease-in-out font-bold shadow-xl shadow-black/40"
+            className="w-full py-4 rounded-lg text-white bg-[#8B5E3C] hover:bg-[#C68F5D] tracking-widest transition-all duration-700 ease-in-out font-bold shadow-xl shadow-black/40"
           >
             Confirm Reservation
           </button>
