@@ -12,7 +12,7 @@
     @apply flex flex-col justify-center items-center w-full max-w-7xl gap-8 sm:gap-10 md:gap-12 lg:gap-14;
   }
   .mainHeading {
-    @apply text-[22px] lg:text-[36px] text-[#3D2B1F]  tracking-wide   font-bold block w-full;
+    @apply text-[22px] lg:text-[36px] text-[#3D2B1F] tracking-wide font-bold block w-full;
   }
 
   .subHeading {

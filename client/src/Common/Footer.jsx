@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="main w-full gap-16">
         <div className=" w-full px-6 grid grid-cols-1 md:grid-cols-4 gap-12 ">
           <div className="col-span-1 md:col-span-1">
-            <img src="/BrewCoffee.png" alt="footer logo" className="w-50 h-50 md:h-40" />
+            <img src="/src/Assets/logo1.png" alt="footer logo" className="w-50" />
             <div className="flex flex-col gap-6">
               <p className="text-sm text-[#A68966] leading-relaxed">
                 Crafting the world's finest coffee since 1994. Dedicated to
