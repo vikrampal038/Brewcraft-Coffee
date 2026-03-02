@@ -16,7 +16,7 @@
   }
 
   .subHeading {
-    @apply text-[0.76rem] text-[#8B5E3C]  tracking-widest uppercase font-bold block w-full font-serif;
+    @apply text-[0.76rem] text-[#D46c11]  tracking-widest uppercase font-bold block w-full font-serif;
   }
 
   .paragraph {
@@ -30,12 +30,20 @@
     @apply text-[14px] font-bold tracking-wider text-[#A68966] uppercase;
   }
   .input {
-    @apply w-full bg-white/5 rounded-lg border text-white border-white/10 px-4 py-3 focus:ring-[#8B5E3C] focus:border-[#8B5E3C] text-sm outline-none transition-all;
+    @apply w-full bg-white/5 rounded-lg border text-white border-white/10 px-4 py-3 focus:ring-[#D46c11] focus:border-[#D46c11] text-sm outline-none transition-all;
+  }
+
+  .contactLabel{
+    @apply text-[#181411] text-base font-medium leading-normal ;
+  }
+
+  .contactInput{
+    @apply  flex w-full rounded-xl text-[#181411] focus:outline-0 focus:ring-[#D46c11]/20 border border-[#e6e0db] bg-transparent focus:border-[#D46c11] h-14 p-4 text-base font-normal duration-700;
   }
 }
 
 @layer utilities {
-  .cart-shadow {
+ {
     box-shadow:
       rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,

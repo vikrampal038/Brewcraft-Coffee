@@ -105,7 +105,7 @@ const Reserve = () => {
               Number Of Guest
             </label>
 
-            <div className="input flex items-center gap-4 rounded-md px-4 py-3 focus-within:border-[#8B5E3C] focus-within:ring-1 focus-within:ring-[#8B5E3C]">
+            <div className="input flex items-center gap-4 rounded-md px-4 py-3 focus-within:border-[#D46c11] focus-within:ring-1 focus-within:ring-[#D46c11]">
               <FaUsers className="text-gray-200 text-lg" />
 
               <input
@@ -123,7 +123,7 @@ const Reserve = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-4 rounded-lg text-white bg-[#8B5E3C] hover:bg-[#C68F5D] tracking-widest transition-all duration-700 ease-in-out font-bold shadow-xl shadow-black/40"
+            className="w-full py-4 rounded-lg text-white bg-[#D46c11] hover:bg-[#C68F5D] tracking-widest transition-all duration-700 ease-in-out font-bold shadow-xl shadow-black/40"
           >
             Confirm Reservation
           </button>

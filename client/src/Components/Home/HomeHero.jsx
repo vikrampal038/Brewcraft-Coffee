@@ -1,9 +1,10 @@
 import React from "react";
-import { TbArrowMoveRightFilled } from "react-icons/tb";
+import { TbArrowRightToArc } from "react-icons/tb";
+
 
 const HomeHero = () => {
   return (
-    <section className="routemein relative md:h-screen overflow-hidden">
+    <section className="routemein relative min-h-screen overflow-hidden">
       {/* bgImge code */}
       <div className="absolute inset-0 z-0">
         <img
@@ -13,9 +14,9 @@ const HomeHero = () => {
         />
       </div>
 
-      <div className="main relative z-10 w-full text-white flex items-start">
+      <div className="main relative z-10 min-h-screen w-full text-white flex items-start">
         <div className="max-w-2xl flex  flex-col  gap-8">
-          <h1 className="subHeading font-sans inline-block w-fit text-white bg-[#8B5E3C]/30 backdrop:blur-md border border-white/20 rounded-full px-4 py-1">
+          <h1 className="subHeading font-sans inline-block w-fit text-white bg-[#D46c11]/30 backdrop:blur-md border border-white/20 rounded-full px-4 py-1">
             Exquisite Blends
           </h1>
 
@@ -34,9 +35,9 @@ const HomeHero = () => {
         <div className="flex flex-wrap gap-4">
           <a
             href="#"
-            className="px-10 py-4 bg-[#8B5E3C] hover:bg-[#C68F5D] rounded-full flex text-white font-bold transition-all duration-700 items-center gap-2 shadow-lg shadow-black/20"
+            className="px-10 py-4 bg-[#D46c11] hover:bg-[#C68F5D] rounded-full flex text-white font-bold transition-all duration-700 items-center gap-2 shadow-lg shadow-black/20"
           >
-            Explore Menu <TbArrowMoveRightFilled className="text-[22px]" />
+            Explore Menu <TbArrowRightToArc className="text-[22px]" />
           </a>
           <a
             href="#"

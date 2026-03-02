@@ -16,13 +16,13 @@ const Footer = () => {
               </p>
               <div className="flex gap-4">
                 <a
-                  className="border size-9 rounded-full border-white/20 flex justify-center items-center hover:bg-[#8B5E3C] transition-colors duration-700"
+                  className="border size-9 rounded-full border-white/20 flex justify-center items-center hover:bg-[#D46c11] transition-colors duration-700"
                   href="#"
                 >
                   <MdPublic className="text-lg" />
                 </a>
                 <a
-                  className="border size-9 rounded-full border-white/20 flex justify-center items-center hover:bg-[#8B5E3C] transition-colors duration-700"
+                  className="border size-9 rounded-full border-white/20 flex justify-center items-center hover:bg-[#D46c11] transition-colors duration-700"
                   href="#"
                 >
                   <FaCamera className="text-lg" />
@@ -136,7 +136,7 @@ const Footer = () => {
 
         <div className="border-t border-white/10 w-full flex flex-col md:flex-row justify-between items-center gap-4 px-8 pt-8">
           <p className="text-sm font-medium font-sans text-[#A68966]">
-            © 2024 Premium Coffee Co. All rights reserved.
+            © 2026 BrewCraft-Coffee All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-[#A68966] text-medium">
             <a

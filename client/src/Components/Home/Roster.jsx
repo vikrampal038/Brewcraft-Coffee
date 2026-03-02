@@ -9,14 +9,14 @@ const Roster = () => {
         <div className="flex flex-col  justify-center items-start w-full">
           {/* Maine Heading part */}
           <div className=" w-full">
-            <h1 className="subHeading text-[#8B5E3C] font-sans">The Roaster's Choice</h1>
+            <h1 className="subHeading text-[#D46c11] font-sans">The Roaster's Choice</h1>
           </div>
           {/* subHeading and Button part */}
           <div className="w-full flex flex-col sm:flex-row items-end-safe sm:justify-between sm:items-center gap-3">
             <h2 className="mainHeading w-full sm:w-1/2 font-serif">Signature Coffees</h2>
             <a
               href="#"
-              className="px-4 py-1.5 xl:px-6 xl:py-3 border rounded-full bg-transparent border-[#8B5E3C] text-[#8B5E3C] font-bold hover:bg-[#8B5E3C] text-end hover:text-white transition-all duration-700 ease-in-out ">
+              className="px-4 py-1.5 xl:px-6 xl:py-3 border rounded-full bg-transparent border-[#D46c11] text-[#D46c11] font-bold hover:bg-[#D46c11] text-end hover:text-white transition-all duration-700 ease-in-out ">
               View Full Menu
             </a>
           </div>
@@ -39,7 +39,7 @@ const Roster = () => {
                       {item.subtitle}
                     </span>
                   </div>
-                  <button className="absolute bottom-4 left-4 right-4 bg-white py-3 rounded-xl font-bold text-sm translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 hover:bg-[#8B5E3C] hover:text-white">
+                  <button className="absolute bottom-4 left-4 right-4 bg-white py-3 rounded-xl font-bold text-sm translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 hover:bg-[#D46c11] hover:text-white">
                     Add to Cart
                   </button>
                 </div>
@@ -47,7 +47,7 @@ const Roster = () => {
                 <div className="flex flex-col justify-center items:center xl:items-start">
                   <h3 className="title font-serif">{item.title}</h3>
                   <p className="paragraph font-sans">{item.description}</p>
-                  <p className="font-bold font-sans text-[#8B5E3C] text-center lg:text-start text-[16px]">{item.price}</p>
+                  <p className="font-bold font-sans text-[#D46c11] text-center lg:text-start text-[16px]">{item.price}</p>
                 </div>
               </div>
             );

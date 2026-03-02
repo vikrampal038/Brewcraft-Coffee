@@ -19,7 +19,7 @@ const Touch = () => {
               {/* contact-1 */}
               <div className="flex  gap-8">
                 <div className="h-10 w-10 bg-white flex items-center justify-center rounded-full">
-                  <FaLocationDot className="text-lg text-[#8B5E3C]" />
+                  <FaLocationDot className="text-lg text-[#D46c11]" />
                 </div>
                 <div className="space-y-2">
                   <h2 className="title text-start  font-serif">
@@ -29,7 +29,7 @@ const Touch = () => {
                     <p className="paragraph text-start  font-sana w-60">
                       123 Brew Street, Portland, OR 97201.
                     </p>
-                    <p className="paragraph text-start text-[#8B5E3C] font-semibold  font-sana w-60">
+                    <p className="paragraph text-start text-[#D46c11] font-semibold  font-sana w-60">
                       +1 (503) 555-0123
                     </p>
                   </div>
@@ -39,7 +39,7 @@ const Touch = () => {
               {/* contact-2 */}
               <div className="flex  gap-8">
                 <div className="h-10 w-10 bg-white flex items-center justify-center rounded-full">
-                  <BsFillClockFill className="text-lg text-[#8B5E3C]" />
+                  <BsFillClockFill className="text-lg text-[#D46c11]" />
                 </div>
                 <div className="space-y-2">
                   <h2 className="title text-start  font-serif">
@@ -60,8 +60,8 @@ const Touch = () => {
             <div className="flex flex-col gap-4 border-t border-[#A68966]/20 w-full">
               <h3 className="subHeading uppercase text-[#A68966] text-[14px] tracking-widest font-serif pt-5">Roaster's Newsletter</h3>
               <div className="flex gap-4">
-                <input className="bg-white rounded-lg border border-[#A68966]/10 px-4 py-2 focus:ring-1 focus:ring-[#8B5E3C] flex-1 focus:border-[#8B5E3C] text-sm outline-none transition-all; text-black" type="email" name="email" id="email" placeholder="your@email.com"/>
-                <button className="text-white px-6 py-2 rounded-lg text-sm font-bold bg-[#3D2B1F] hover:bg-[#8B5E3C] transition-color">join</button>
+                <input className="bg-white rounded-lg border border-[#A68966]/10 px-4 py-2 focus:ring-1 focus:ring-[#D46c11] flex-1 focus:border-[#D46c11] text-sm outline-none transition-all; text-black" type="email" name="email" id="email" placeholder="your@email.com"/>
+                <button className="text-white px-6 py-2 rounded-lg text-sm font-bold bg-[#3D2B1F] hover:bg-[#D46c11] transition-color">join</button>
               </div>
             </div>
           </div>
@@ -73,18 +73,18 @@ const Touch = () => {
               alt="map-Privew"
               className="h-full w-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
-            <div className="absolute inset-0 bg-[#8B5E3C]/5 pointer-events-none group-hover:bg-transparent transition-colors"></div>
+            <div className="absolute inset-0 bg-[#D46c11]/5 pointer-events-none group-hover:bg-transparent transition-colors"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <div className="relative">
-                <div className="absolute inset-0 bg-[#8B5E3C] animate-ping rounded-full opacity-75"></div>
-                <div className="relative inset-0 bg-[#8B5E3C] rounded-full flex items-center justify-center text-white ring-8 ring-[#8B5E3C]/20 shadow-2xl p-2">
+                <div className="absolute inset-0 bg-[#D46c11] animate-ping rounded-full opacity-75"></div>
+                <div className="relative inset-0 bg-[#D46c11] rounded-full flex items-center justify-center text-white ring-8 ring-[#D46c11]/20 shadow-2xl p-2">
                   <SlLocationPin className="font-bold" />
                 </div>
               </div>
             </div>
             <div className="absolute bottom-6 right-6 bg-white/90 backdrop:blur-md px-10 py-3 rounded-2xl shadow-2xl border border-[#A68966]/10 text-center">
             <p className="title text-[12px] text-[#3D2B1F99] font-sans">Current wait Time</p>
-            <p className="title text-center text-[#8B5E3C] font-sans">~15 Minute</p>
+            <p className="title text-center text-[#D46c11] font-sans">~15 Minute</p>
             </div>
           </div>
         </div>

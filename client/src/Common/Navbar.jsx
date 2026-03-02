@@ -11,7 +11,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="cart-shadow fixed top-0 left-0 w-full bg-white h-16 z-40">
+    <div className="cart-shadow fixed top-0 left-0 w-full bg-white h-18 z-40">
       <div className="flex items-center justify-between xl:px-35 px-5 sm:px-10 md:px-15 lg:px-20 h-16">
 
         {/* Logo */}
@@ -41,7 +41,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             className="relative z-10 subHeading capitalize text-black xl:text-[16px]"
           >
-             Sign In
+            Sign In
           </a>
         </div>
 
@@ -56,9 +56,8 @@ const Navbar = () => {
 
       {/* Mobile / Tablet Menu */}
       <div
-        className={`fixed top-0 right-0 w-50 sm:w-70 h-95 rounded-bl-md bg-gradient-brand-500-300-200 z-50 transform transition-transform duration-500 ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 w-50 sm:w-70 h-95 rounded-bl-md bg-gradient-brand-500-300-200 z-50 transform transition-transform duration-500 ${menuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="flex justify-end p-5">
           <button onClick={() => setMenuOpen(false)} className="text-3xl">

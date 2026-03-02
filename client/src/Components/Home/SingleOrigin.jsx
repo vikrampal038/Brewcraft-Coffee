@@ -13,7 +13,7 @@ const SingleOrigin = () => {
               <img src="/src/Assets/singleOriginImg.jpg" alt="singleOrigin Image" className="h-[512px] w-full rounded-2xl shadow-2xl"/>
               <div className="absolute inset-0 bg-[#C68F5D]/25"></div>
               <div className="absolute bg-white -bottom-8 md:-right-4 lg:-right-12   rounded-2xl p-8 shadow-xl w-95 border border-[#A68966]/10 hidden md:block ">
-                <p className="title italic text-[#8B5E3C] font-serif leading-relaxed tracking-wider">"Sustainability is not a choice, it's our core identity."</p>
+                <p className="title italic text-[#D46c11] font-serif leading-relaxed tracking-wider">"Sustainability is not a choice, it's our core identity."</p>
                 <div className="mt-4 flex items-center gap-3">
                   <div className="h-[2px] w-8 bg-[#C68F5D]"></div>
                   <p className="title tracking-widest text-[#3D2B1F] uppercase text-[12px] font-sans">Our Founding Principle</p>
@@ -24,7 +24,7 @@ const SingleOrigin = () => {
           <div className="order-1 lg:order-2 flex flex-col items-start gap-8 w-full">
             <h1 className="text-4xl md:text-[48px] font-serif font-bold tracking-tight text-[#3D2B1F]">
               The Soul of Every <br />
-              <span className="italic text-[#8B5E3C]">Single Origin</span>
+              <span className="italic text-[#D46c11]">Single Origin</span>
             </h1>
 
             <p className="paragraph text-[#A68966] text-lg max-w-xl text-start">
@@ -35,7 +35,7 @@ const SingleOrigin = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
               <div className="space-y-2">
-                <RiPsychotherapyLine className="text-3xl text-[#8B5E3C]" />
+                <RiPsychotherapyLine className="text-3xl text-[#D46c11]" />
                 <h2 className="title text-start  font-serif">Curated Roast Profiles</h2>
                 <p className="paragraph text-start  font-sana w-60">
                   Each bean profile is tested 100+ times before release.
@@ -43,7 +43,7 @@ const SingleOrigin = () => {
               </div>
 
               <div className="space-y-2">
-                <MdOutlineHandshake className="text-3xl text-[#8B5E3C]" />
+                <MdOutlineHandshake className="text-3xl text-[#D46c11]" />
                 <h2 className="title text-start  font-serif">Direct Trade Partners</h2>
                 <p className="paragraph text-start  font-sana w-60">
                   Paying 50% above fair-trade standards for quality.
