@@ -11,7 +11,6 @@ export default {
         "deep-coffee": "#3D2B1F",
         "background-light": "#F9F7F2",
         "background-dark": "#221810",
-        
         caramel: "#C68F5D",
       },
       fontFamily: {

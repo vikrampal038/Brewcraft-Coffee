@@ -3,7 +3,7 @@ import { FaLocationDot } from "react-icons/fa6";
 
 const contactHero = () => {
   return (
-    <section className="routemein bg-[#F9F7F2]">
+    <section className="routemein bg-[#F9F7F2] mt-12">
       <div className="main">
         {/* Heading Part */}
         <div className="flex flex-col justify-center items-center gap-4">
