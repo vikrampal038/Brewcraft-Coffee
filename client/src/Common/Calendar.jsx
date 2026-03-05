@@ -1,57 +1,58 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { addDays } from "date-fns"
+import * as React from "react";
+import { addDays } from "date-fns";
+import { Calendar as DayCalendar } from "@/Components/ui/calendar";
+import { Button } from "@/Components/ui/button";
 
-export function CalendarWithPresets() {
-  const [date, setDate] = React.useState<Date | undefined>(
-    new Date(new Date().getFullYear(), 1, 12)
-  )
-  const [currentMonth, setCurrentMonth] = React.useState<Date>(
-    new Date(new Date().getFullYear(), new Date().getMonth(), 1)
-  )
+export function Calendar() {
+  const [date, setDate] = React.useState(new Date());
+  const [month, setMonth] = React.useState(new Date());
+
+  const presets = [
+    { label: "Today", value: 0 },
+    { label: "Tomorrow", value: 1 },
+    { label: "In 3 days", value: 3 },
+    { label: "In a week", value: 7 },
+    { label: "In 2 weeks", value: 14 },
+  ];
+
+  const handlePreset = (days) => {
+    const newDate = addDays(new Date(), days);
+    setDate(newDate);
+    setMonth(newDate);
+  };
 
   return (
-    <Card className="mx-auto w-fit max-w-[300px]" size="sm">
-      <CardContent>
-        <Calendar
+    <div className="w-full border border-[#e6e0db] rounded-xl bg-white shadow-sm">
+      
+      {/* Calendar */}
+      <div className="p-3">
+        <DayCalendar
           mode="single"
           selected={date}
           onSelect={setDate}
-          month={currentMonth}
-          onMonthChange={setCurrentMonth}
+          month={month}
+          onMonthChange={setMonth}
           fixedWeeks
-          className="p-0 [--cell-size:--spacing(9.5)]"
+          className="p-0 w-full"
         />
-      </CardContent>
-      <CardFooter className="flex flex-wrap gap-2 border-t">
-        {[
-          { label: "Today", value: 0 },
-          { label: "Tomorrow", value: 1 },
-          { label: "In 3 days", value: 3 },
-          { label: "In a week", value: 7 },
-          { label: "In 2 weeks", value: 14 },
-        ].map((preset) => (
+      </div>
+
+      {/* Presets */}
+      <div className="border-t border-[#e6e0db] p-3 flex flex-wrap gap-2">
+        {presets.map((preset) => (
           <Button
             key={preset.value}
             variant="outline"
             size="sm"
-            className="flex-1"
-            onClick={() => {
-              const newDate = addDays(new Date(), preset.value)
-              setDate(newDate)
-              setCurrentMonth(
-                new Date(newDate.getFullYear(), newDate.getMonth(), 1)
-              )
-            }}
+            className="flex-1 text-xs"
+            onClick={() => handlePreset(preset.value)}
           >
             {preset.label}
           </Button>
         ))}
-      </CardFooter>
-    </Card>
-  )
+      </div>
+    </div>
+  );
 }
