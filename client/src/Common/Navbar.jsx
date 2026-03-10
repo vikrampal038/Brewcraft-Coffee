@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { NavLink, Link } from "react-router-dom";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { ShoppingCart } from "lucide-react";
+import { CartContext } from "../Context/CartContext";
 
 const navLinks = [
   { name: "Home", path: "/" },
+  { name: "Menu", path: "/menu" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
   { name: "Reservation", path: "/table-reservation" },
@@ -11,6 +14,7 @@ const navLinks = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { getCartCount } = useContext(CartContext);
 
   return (
     <div className="cart-shadow fixed top-0 left-0 w-full bg-white h-18 z-40">
@@ -34,26 +38,47 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Desktop CTA (ONLY xl and above) */}
-        <div className="hidden xl:block cart-shadow relative group px-5 py-1.5 overflow-hidden w-fit text-center border rounded-full hover:scale-110 transition-all duration-700">
-          <span className="absolute inset-0 bg-[#A689663f] -translate-x-full group-hover:translate-x-0 transition-transform duration-700 z-0" />
-          <a
-            href="https://wa.me/919029965109?text=Hello,%20I’m%20interested%20in%20your%20services."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative z-10 subHeading capitalize text-black xl:text-[16px]"
-          >
-            Sign In
-          </a>
+        {/* Desktop CTA & Cart (ONLY xl and above) */}
+        <div className="hidden xl:flex items-center gap-6">
+          <Link to="/cart" className="relative group p-2 hover:text-[#D46C11] transition-colors">
+            <ShoppingCart size={24} strokeWidth={2} />
+            {getCartCount() > 0 && (
+              <span className="absolute top-0 right-0 bg-[#D46C11] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center translate-x-1 -translate-y-1 shadow-sm">
+                {getCartCount()}
+              </span>
+            )}
+          </Link>
+
+          <div className="cart-shadow relative group px-5 py-1.5 overflow-hidden w-fit text-center border rounded-full hover:scale-110 transition-all duration-700">
+            <span className="absolute inset-0 bg-[#A689663f] -translate-x-full group-hover:translate-x-0 transition-transform duration-700 z-0" />
+            <a
+              href="https://wa.me/919029965109?text=Hello,%20I’m%20interested%20in%20your%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative z-10 subHeading capitalize text-black xl:text-[16px]"
+            >
+              Sign In
+            </a>
+          </div>
         </div>
 
-        {/* Menu Button (Tablet + Mobile) */}
-        <button
-          onClick={() => setMenuOpen(true)}
-          className="xl:hidden text-3xl"
-        >
-          <HiMenuAlt3 />
-        </button>
+        {/* Mobile / Tablet Menu & Cart */}
+        <div className="xl:hidden flex items-center gap-4">
+          <Link to="/cart" className="relative p-2 text-[#0A0A0A]">
+            <ShoppingCart size={24} strokeWidth={2} />
+            {getCartCount() > 0 && (
+              <span className="absolute top-0 right-0 bg-[#D46C11] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center translate-x-1 -translate-y-1 shadow-sm">
+                {getCartCount()}
+              </span>
+            )}
+          </Link>
+          <button
+            onClick={() => setMenuOpen(true)}
+            className="text-3xl"
+          >
+            <HiMenuAlt3 />
+          </button>
+        </div>
       </div>
 
       {/* Mobile / Tablet Menu */}
