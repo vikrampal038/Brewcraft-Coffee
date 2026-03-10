@@ -6,7 +6,7 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
-  { name: "TableReservation", path: "/table-reservation" },
+  { name: "Reservation", path: "/table-reservation" },
 ];
 
 const Navbar = () => {
@@ -58,7 +58,7 @@ const Navbar = () => {
 
       {/* Mobile / Tablet Menu */}
       <div
-        className={`fixed top-0 right-0 w-50 sm:w-70 h-95 rounded-bl-md bg-gradient-brand-500-300-200 z-50 transform transition-transform duration-500 ${menuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 right-0 w-full h-full bg-white rounded-bl-md bg-gradient-brand-500-300-200 z-50 transform transition-transform duration-500 ${menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
         <div className="flex justify-end p-5">
@@ -80,10 +80,10 @@ const Navbar = () => {
 
           {/* CTA inside menu */}
           <a
-            href="https://wa.me/919029965109?text=Hello,%20I’m%20interested%20in%20your%20services."
+            href=""
             target="_blank"
             rel="noopener noreferrer"
-            className=" px-6 py-1 border rounded cart-shadow"
+            className=" px-6 py-1 cart-shadow"
           >
             Sign In
           </a>

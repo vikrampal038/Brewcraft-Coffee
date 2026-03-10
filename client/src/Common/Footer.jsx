@@ -153,7 +153,7 @@ const Footer = () => {
             </a>
             <div className="flex items-center gap-1 hover:text-white transition-colors duration-700">
               <MdAdminPanelSettings />
-              A justify-startdmin
+              Admin
             </div>
           </div>
         </div>

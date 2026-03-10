@@ -17,7 +17,7 @@ const AboutPhilosophy = () => {
                     <p className="text-[#d97736] tracking-[0.2em] text-xs font-bold uppercase">
                         Philosophy
                     </p>
-                    <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] leading-tight flex-wrap tracking-tight">
+                    <h2 className="text-4xl lg:text-5xl font-black text-[#1a1a1a] leading-tight flex-wrap tracking-tight">
                         The soul of the <br /> bean starts with <br /> the soil.
                     </h2>
                     <div className="space-y-6 text-gray-500 font-medium leading-relaxed">

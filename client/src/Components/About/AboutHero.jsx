@@ -13,7 +13,7 @@ const AboutHero = () => {
           className="w-full h-full object-cover object-top"
         />
         {/* Gradient that fades to the page background color at the bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/50 to-[#f9f9f9]"></div>
+        <div className="absolute inset-0 bg-linear-to-b from-white/30 via-white/50 to-[#f9f9f9]"></div>
       </div>
 
       {/* Content */}
@@ -24,7 +24,7 @@ const AboutHero = () => {
           transition={{ duration: 0.6 }}
           className="text-[#d97736] tracking-[0.2em] text-sm font-semibold uppercase mb-4"
         >
-          Est. 2014
+          Est. 2026
         </motion.p>
         
         <motion.h1
