@@ -6,10 +6,10 @@ import { CartContext } from "../Context/CartContext";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "Menu", path: "/menu" },
   { name: "About", path: "/about" },
+  { name: "Menu", path: "/menu" },
   { name: "Contact", path: "/contact" },
-  { name: "Reservation", path: "/table-reservation" },
+  // { name: "Reservation", path: "/table-reservation" },
 ];
 
 const Navbar = () => {

@@ -162,7 +162,7 @@ const ProductDetailsHero = ({ product }) => {
                     </div>
 
                     <p className="text-[13px] text-[#818181] font-bold flex items-center gap-2.5 mb-10 tracking-wide">
-                        <span className="bg-[#EAEAEA] text-[#0A0A0A] p-1.5 rounded-full"><Tag size={10} fill="currentColor" /></span> Free shipping on orders over $50
+                        <span className="bg-[#EAEAEA] text-[#0A0A0A] p-1.5 rounded-full"><Tag size={10} fill="currentColor" /></span> Free shipping on orders over ₹4596.50
                     </p>
 
                     {/* Brewing Guide Dropdown */}

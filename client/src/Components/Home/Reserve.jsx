@@ -1,138 +1,117 @@
 import React from "react";
-import { FaUsers, FaUserAlt, FaPhoneAlt } from "react-icons/fa";
-import { BsCalendar2DateFill } from "react-icons/bs";
-import { IoTimeSharp } from "react-icons/io5";
-
+import { useNavigate } from "react-router-dom";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { BsClockHistory } from "react-icons/bs";
+import { MdOutlineStorefront } from "react-icons/md";
+import { motion } from "framer-motion";
+import reservationImg1 from "../../Assets/reservation.png";
+import reservationImg2 from "../../Assets/reservation(1).png";
 const Reserve = () => {
+  const navigate = useNavigate();
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
+  const imageVibrate = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 1, ease: "easeOut", delay: 0.2 } }
+  };
+
   return (
-    <section className="routemein relative h-screen overflow-hidden bg-fixed bg-cover bg-center"
-      style={{ backgroundImage: "url('/src/Assets/reservationbgImg.jpg')" }}>
-      <div className="absolute inset-0   bg-[#3D2B1F]/85"></div>
-      <div className="flex flex-col gap-7.5 relative z-10 w-full lg:w-200">
-        {/* Heading section */}
-        <div className="flex flex-col justify-center items-start w-full gap-2 ">
-          <h1 className="subHeading text-[#C68F5D] font-sans">
-            Reserve Your Experience
-          </h1>
-          <h2 className="mainHeading text-white font-serif xl:text-[48px]">
-            Secure Your{" "}
-            <span className="text-[#C68F5D] italic">Quiet Corner</span>
+    <section className="bg-[#FBF8EF] py-20 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
+      <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+
+        {/* Left Side: Content */}
+        <motion.div
+          className="flex-1 flex flex-col items-start gap-6 w-full lg:max-w-[55%]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+        >
+          {/* Tag */}
+          <div className="px-4 py-1.5 rounded-full bg-[#faebd7] text-[#D46c11] text-[11px] font-bold tracking-wider uppercase inline-block">
+            Exclusive Experience
+          </div>
+
+          {/* Heading */}
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#3D2B1F] leading-[1.15] tracking-tight">
+            Reserve Your Table <br className="hidden sm:block" /> for Pure Comfort
           </h2>
-          <p className="paragraph w-full lg:w-150 text-start font-sans text-[16px]">
-            Whether it's a focused morning session or a slow weekend brunch,
-            we'll have your favorite table waiting for you.
+
+          {/* Paragraph */}
+          <p className="text-[#3D2B1F]/70 text-[15px] sm:text-[17px] leading-relaxed max-w-[500px]">
+            Plan your visit to Brewcraft Coffee and enjoy handcrafted coffee, cozy ambiance, and unforgettable moments in our premium sanctuary.
           </p>
-        </div>
-        {/* Form section */}
-        <form className="space-y-6 text-white w-full">
-          {/* For Name and Number */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* For Name */}
-            <div className="space-y-2  flex flex-col gap-1">
-              <label htmlFor="name" className="label">
-                Name
-              </label>
 
-              <div className="flex input items-center gap-4 w-full ">
-                <FaUserAlt className="text-gray-200 text-lg" />
-                <input
-                  type="tel"
-                  name="phone"
-                  id="phone"
-                  max="10"
-                  min="10"
-                  placeholder="Your Phone Number"
-                  className="w-full bg-transparent outline-none border-none focus:outline-none focus:ring-0"
-                />
-              </div>
-            </div>
+          {/* List Items */}
+          <ul className="flex flex-col gap-5 mt-2 mb-2">
+            <li className="flex items-center gap-4">
+              <span className="w-[34px] h-[34px] rounded-full bg-[#D46c11] text-white flex items-center justify-center text-[15px] shadow-sm flex-shrink-0">
+                <FaRegCalendarAlt />
+              </span>
+              <span className="text-[#3D2B1F]/90 font-bold text-[14px] sm:text-[15px]">
+                Choose your preferred date and time
+              </span>
+            </li>
 
-            {/* For Phone */}
-            <div className="space-y-2 flex flex-col gap-1">
-              <label htmlFor="phone" className="label">
-                Mobile Number
-              </label>
+            <li className="flex items-center gap-4">
+              <span className="w-[34px] h-[34px] rounded-full bg-[#D46c11] text-white flex items-center justify-center text-[15px] shadow-sm flex-shrink-0">
+                <BsClockHistory />
+              </span>
+              <span className="text-[#3D2B1F]/90 font-bold text-[14px] sm:text-[15px]">
+                Skip waiting lines
+              </span>
+            </li>
 
-              <div className="flex input items-center gap-4 w-full ">
-                <FaPhoneAlt className="text-gray-200 text-lg" />
-                <input
-                  type="tel"
-                  name="phone"
-                  id="phone"
-                  max="10"
-                  min="10"
-                  placeholder="Your Phone Number"
-                  className="w-full bg-transparent outline-none border-none focus:outline-none focus:ring-0"
-                />
-              </div>
-            </div>
-          </div>
+            <li className="flex items-center gap-4">
+              <span className="w-[34px] h-[34px] rounded-full bg-[#D46c11] text-white flex items-center justify-center text-[15px] shadow-sm flex-shrink-0">
+                <MdOutlineStorefront />
+              </span>
+              <span className="text-[#3D2B1F]/90 font-bold text-[14px] sm:text-[15px]">
+                Perfect for meetings and casual hangouts
+              </span>
+            </li>
+          </ul>
 
-          {/* For Date and Time */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* For date */}
-            <div className="space-y-2  flex flex-col gap-1">
-              <label htmlFor="date" className="label">
-                Date
-              </label>
-              <div className="flex input items-center gap-4 w-full ">
-                <BsCalendar2DateFill className="text-gray-200 text-lg" />
-                <input type="date" name="date" id="date" className="w-full" />
-              </div>
-            </div>
-
-            {/* For time */}
-            <div className="space-y-2 flex flex-col gap-1">
-              <label htmlFor="time" className="label">
-                Time
-              </label>
-              <div className="flex input items-center gap-4 ">
-                <IoTimeSharp className="text-gray-200 text-lg" />
-                <select type="time" name="time" id="time" className="w-full">
-                  <option className="bg-[#3D2B1F] pr-1">08:00 Am</option>
-                  <option className="bg-[#3D2B1F] pr-1">10:00 Am</option>
-                  <option className="bg-[#3D2B1F] pr-1">01:00 Am</option>
-                  <option className="bg-[#3D2B1F] pr-1">04:00 Am</option>
-                  <option className="bg-[#3D2B1F] pr-1">07:00 Am</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          {/* For Number Of Guest */}
-          <div className="space-y-2 flex flex-col gap-1">
-            <label htmlFor="guest" className="label">
-              Number Of Guest
-            </label>
-
-            <div className="input flex items-center gap-4 rounded-md px-4 py-3 focus-within:border-[#D46c11] focus-within:ring-1 focus-within:ring-[#D46c11]">
-              <FaUsers className="text-gray-200 text-lg" />
-
-              <input
-                type="number"
-                name="guest"
-                id="guest"
-                min="1"
-                max="10"
-                placeholder="Number of Guest"
-                className=" w-full bg-transparent outline-none border-none focus:outline-none focus:ring-0"
-              />
-            </div>
-          </div>
-
-          {/* Submit Button */}
+          {/* Button */}
           <button
-            type="submit"
-            className="w-full py-4 rounded-lg text-white bg-[#D46c11] hover:bg-[#C68F5D] tracking-widest transition-all duration-700 ease-in-out font-bold shadow-xl shadow-black/40"
+            onClick={() => navigate('/table-reservation')}
+            className="mt-2 px-8 py-3.5 bg-[#D46c11] hover:bg-[#c26210] text-white rounded-full font-bold text-[15px] shadow-[0_4px_14px_0_rgba(212,108,17,0.39)] transition-all transform active:scale-[0.98]"
           >
-            Confirm Reservation
+            Reserve a Table
           </button>
-        </form>
-        {/* description section */}
-        <p className="paragraph font-sans text-start text-gray-200">
-          Reservations are held for 15 minutes past scheduled time. For groups
-          over 6, please call us directly.
-        </p>
+        </motion.div>
+
+        {/* Right Side: Images */}
+        <motion.div
+          className="relative w-full max-w-[400px] sm:max-w-[500px] lg:max-w-none lg:w-[500px] h-[450px] sm:h-[550px] lg:h-[600px] mt-8 lg:mt-0 flex-shrink-0 mx-auto lg:mx-0"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={imageVibrate}
+        >
+          {/* Back Image (Man) */}
+          <div className="absolute bottom-0 left-0 w-[220px] h-[280px] sm:w-[280px] sm:h-[350px] lg:w-[320px] lg:h-[400px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border-[10px] sm:border-[16px] border-[#FBF8EF] shadow-sm z-0">
+            <img
+              src={reservationImg2}
+              alt="Man sitting at cafe"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Front Image (Couple) */}
+          <div className="absolute top-0 right-0 w-[240px] h-[280px] sm:w-[320px] sm:h-[380px] lg:w-[360px] lg:h-[440px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border-[10px] sm:border-[16px] border-[#FBF8EF] shadow-sm z-10 transition-transform duration-500 hover:scale-[1.02]">
+            <img
+              src={reservationImg1}
+              alt="Couple enjoying coffee"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

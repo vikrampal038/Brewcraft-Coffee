@@ -2,11 +2,36 @@ import React, { createContext, useState, useEffect } from 'react';
 
 export const CartContext = createContext();
 
+const USD_TO_INR = 91.93;
+
 export const CartProvider = ({ children }) => {
     // Try to load cart from local storage on mount
     const [cartItems, setCartItems] = useState(() => {
         const savedCart = localStorage.getItem('brewcraft_cart');
-        return savedCart ? JSON.parse(savedCart) : [];
+        if (!savedCart) return [];
+
+        try {
+            const parsed = JSON.parse(savedCart);
+            if (!Array.isArray(parsed)) return [];
+
+            // One-time-ish migration: older carts stored USD numeric prices (~3-10). INR prices here are ~300+.
+            return parsed.map((item) => {
+                const raw = item?.price;
+                const numeric = typeof raw === 'number'
+                    ? raw
+                    : parseFloat(String(raw || '').replace(/[^0-9.]/g, ''));
+
+                if (!Number.isFinite(numeric)) return item;
+
+                const looksLikeUsd = numeric > 0 && numeric < 100 && item?.currency !== 'INR';
+                if (!looksLikeUsd) return item;
+
+                const inr = Number((numeric * USD_TO_INR).toFixed(2));
+                return { ...item, price: inr, currency: 'INR' };
+            });
+        } catch {
+            return [];
+        }
     });
 
     // Update local storage whenever cart changes
@@ -27,7 +52,7 @@ export const CartProvider = ({ children }) => {
             } else {
                 // Parse numeric price from string if necessary
                 const numericPrice = typeof product.price === 'string'
-                    ? parseFloat(product.price.replace('$', ''))
+                    ? parseFloat(product.price.replace(/[^0-9.]/g, ''))
                     : product.price;
 
                 // Add new item
@@ -36,7 +61,8 @@ export const CartProvider = ({ children }) => {
                     price: numericPrice,
                     quantity: quantity,
                     grind: options.grind,
-                    roast: options.roast
+                    roast: options.roast,
+                    currency: 'INR'
                 }];
             }
         });

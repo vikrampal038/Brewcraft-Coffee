@@ -1,10 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import MenuItemCard from './MenuItemCard';
+import { categoryId } from '../../utils/categoryId';
 
 const MenuSection = ({ category, subtitle, items }) => {
     return (
-        <section className="mb-20" id={category.toLowerCase()}>
+        <section className="mb-20" id={categoryId(category)}>
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[#EAEAEA] pb-4 mb-8">
                 <h2 className="text-[28px] font-black tracking-tight text-[#0A0A0A] uppercase mb-2 sm:mb-0 leading-none">
                     {category}
@@ -15,7 +15,7 @@ const MenuSection = ({ category, subtitle, items }) => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                {items.map((item, index) => (
+                {items.map((item) => (
                     <MenuItemCard key={item.id} item={item} />
                 ))}
             </div>

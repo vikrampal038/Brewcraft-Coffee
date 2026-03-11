@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { TbArrowRightToArc } from "react-icons/tb";
 
 
 const HomeHero = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="routemein relative min-h-screen overflow-hidden">
       {/* bgImge code */}
@@ -33,18 +36,18 @@ const HomeHero = () => {
           </p>
         </div>
         <div className="flex flex-wrap gap-4">
-          <a
-            href="#"
+          <button
+            onClick={() => navigate("/menu")}
             className="px-10 py-4 bg-[#D46c11] hover:bg-[#C68F5D] rounded-full flex text-white font-bold transition-all duration-700 items-center gap-2 shadow-lg shadow-black/20"
           >
             Explore Menu <TbArrowRightToArc className="text-[22px]" />
-          </a>
-          <a
-            href="#"
+          </button>
+          <button
+            onClick={() => navigate("/table-reservation")}
             className="px-10 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-white font-bold transition-all duration-700"
           >
             Reserve a Table
-          </a>
+          </button>
         </div>
       </div>
     </section>

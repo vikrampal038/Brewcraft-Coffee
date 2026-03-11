@@ -16,17 +16,17 @@ const OrderSuccess = () => {
                 image: "https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=150&h=150&fit=crop",
                 grind: "Whole Bean",
                 quantity: 1,
-                price: 24.00
+                price: 2206.32
             },
             {
                 name: "Signature Latte",
                 image: "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=150&h=150&fit=crop",
                 grind: "Oat Milk",
                 quantity: 1,
-                price: 6.50
+                price: 597.55
             }
         ],
-        totalAmount: 30.50
+        totalAmount: 2803.87
     };
 
     return (
@@ -93,7 +93,7 @@ const OrderSuccess = () => {
                                         <p className="text-[#A3A3A3] text-[12px] font-medium">{item.grind}, {item.quantity > 1 ? `${item.quantity}x ` : ''}{item.quantity === 1 ? '250g' : ''}</p>
                                     </div>
                                     <div className="font-black text-[#0A0A0A] text-[15px]">
-                                        ${(item.price * item.quantity).toFixed(2)}
+                                        ₹{(item.price * item.quantity).toFixed(2)}
                                     </div>
                                 </div>
                             ))}
@@ -102,7 +102,7 @@ const OrderSuccess = () => {
                         {/* Total */}
                         <div className="flex justify-between items-center py-6 border-t border-b border-[#F4F5F7] mb-8">
                             <span className="text-[15px] font-medium text-[#7A7A7A]">Total Amount</span>
-                            <span className="text-[24px] font-black text-[#D46C11]">${orderDetails.totalAmount.toFixed(2)}</span>
+                            <span className="text-[24px] font-black text-[#D46C11]">₹{orderDetails.totalAmount.toFixed(2)}</span>
                         </div>
 
                         {/* Address Box */}

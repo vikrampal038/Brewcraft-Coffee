@@ -56,11 +56,11 @@ const Cart = () => {
                                                 <div>
                                                     <h3 className="text-[18px] sm:text-[20px] font-bold text-[#EAEAEA] tracking-tight leading-tight mb-1">{item.name}</h3>
                                                     <p className="text-[#A3998C] text-[13px] font-medium">{item.grind} | {item.roast}</p>
-                                                    <p className="text-[#D99B58] font-bold text-[14px] mt-1.5 sm:mt-2">${item.price.toFixed(2)}</p>
+                                                    <p className="text-[#D99B58] font-bold text-[14px] mt-1.5 sm:mt-2">₹{item.price.toFixed(2)}</p>
                                                 </div>
 
                                                 <div className="hidden sm:flex flex-col items-end gap-3">
-                                                    <span className="font-bold text-[18px] text-[#EAEAEA]">${(item.price * item.quantity).toFixed(2)}</span>
+                                                    <span className="font-bold text-[18px] text-[#EAEAEA]">₹{(item.price * item.quantity).toFixed(2)}</span>
                                                     <button
                                                         onClick={() => removeFromCart(item.id, item.grind, item.roast)}
                                                         className="text-[#A3998C] hover:text-[#EF4444] transition-colors flex items-center gap-1.5 text-[12px] font-semibold"
@@ -82,7 +82,7 @@ const Cart = () => {
                                                 </div>
 
                                                 <div className="sm:hidden flex flex-col items-end gap-2">
-                                                    <span className="font-bold text-[18px] text-[#EAEAEA]">${(item.price * item.quantity).toFixed(2)}</span>
+                                                    <span className="font-bold text-[18px] text-[#EAEAEA]">₹{(item.price * item.quantity).toFixed(2)}</span>
                                                     <button
                                                         onClick={() => removeFromCart(item.id, item.grind, item.roast)}
                                                         className="text-[#A3998C] hover:text-[#EF4444] transition-colors flex items-center gap-1.5 text-[12px] font-semibold"
@@ -115,11 +115,11 @@ const Cart = () => {
                                 <div className="space-y-4 mb-8">
                                     <div className="flex justify-between items-center text-[14px] font-medium text-[#A3998C]">
                                         <span>Subtotal</span>
-                                        <span className="text-[#EAEAEA] font-semibold">${subtotal.toFixed(2)}</span>
+                                        <span className="text-[#EAEAEA] font-semibold">₹{subtotal.toFixed(2)}</span>
                                     </div>
                                     <div className="flex justify-between items-center text-[14px] font-medium text-[#A3998C]">
                                         <span>Estimated Tax</span>
-                                        <span className="text-[#D99B58] font-semibold">${estTax.toFixed(2)}</span>
+                                        <span className="text-[#D99B58] font-semibold">₹{estTax.toFixed(2)}</span>
                                     </div>
                                     <div className="flex justify-between items-center text-[14px] font-medium text-[#A3998C]">
                                         <span>Shipping</span>
@@ -129,7 +129,7 @@ const Cart = () => {
 
                                 <div className="flex justify-between items-center mb-8 border-t border-[#3A322A] pt-6">
                                     <span className="text-[18px] font-bold text-[#EAEAEA]">Total</span>
-                                    <span className="text-[26px] font-black text-[#D99B58]">${total.toFixed(2)}</span>
+                                    <span className="text-[26px] font-black text-[#D99B58]">₹{total.toFixed(2)}</span>
                                 </div>
 
                                 <div className="mb-8">

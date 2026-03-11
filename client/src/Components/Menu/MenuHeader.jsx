@@ -32,7 +32,7 @@ const MenuHeader = ({ categories, activeCategory, onCategoryChange }) => {
                     <button
                         key={idx}
                         onClick={() => onCategoryChange(cat)}
-                        className={`text-[11px] font-bold tracking-[0.15em] uppercase transition-colors relative pb-3 ${activeCategory === cat ? 'text-[#0A0A0A]' : 'text-[#A3A3A3] hover:text-[#0A0A0A]'}`}
+                        className={`text-[14px] font-bold tracking-[0.15em] uppercase transition-colors relative pb-3 ${activeCategory === cat ? 'text-[#0A0A0A]' : 'text-[#A3A3A3] hover:text-[#0A0A0A]'}`}
                     >
                         {cat}
                         {activeCategory === cat && (

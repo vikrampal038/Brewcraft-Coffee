@@ -1,29 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import MenuHeader from '../Components/Menu/MenuHeader';
 import MenuSection from '../Components/Menu/MenuSection';
 import { menuData } from '../Data/MenuData';
+import { useLocation } from 'react-router-dom';
+import { categoryId } from '../utils/categoryId';
 
 const Menu = () => {
-    const categories = menuData.map(data => data.category);
+    const location = useLocation();
+    const categories = useMemo(() => menuData.map(data => data.category), []);
     const [activeCategory, setActiveCategory] = useState(categories[0]);
 
     // Use scroll into view logic to navigate between categories for a longer page feel
-    const handleCategoryChange = (category) => {
+    const handleCategoryChange = useCallback((category) => {
         setActiveCategory(category);
-        const element = document.getElementById(category.toLowerCase());
+        const element = document.getElementById(categoryId(category));
         if (element) {
             const topOffset = element.getBoundingClientRect().top + window.scrollY - 100;
             window.scrollTo({ top: topOffset, behavior: 'smooth' });
         }
-    };
+    }, []);
+
+    // Allow deep-linking: /menu?category=ESPRESSO (or navigation state)
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const requested = params.get('category') || location.state?.category;
+        if (!requested) return;
+
+        const match = categories.find(c => c.toLowerCase() === String(requested).toLowerCase());
+        if (!match) return;
+
+        // Scroll only; the scroll listener will update activeCategory.
+        const element = document.getElementById(categoryId(match));
+        if (element) {
+            const topOffset = element.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top: topOffset, behavior: 'smooth' });
+            window.dispatchEvent(new Event('scroll'));
+        }
+    }, [location.search, location.state, categories]);
 
     // Setup intersection observer to update active tab on scroll
     useEffect(() => {
         const handleScroll = () => {
             let currentActive = activeCategory;
             for (const cat of categories) {
-                const el = document.getElementById(cat.toLowerCase());
+                const el = document.getElementById(categoryId(cat));
                 if (el) {
                     const rect = el.getBoundingClientRect();
                     if (rect.top <= 150 && rect.bottom >= 150) {

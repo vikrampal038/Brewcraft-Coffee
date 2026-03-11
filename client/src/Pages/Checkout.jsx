@@ -241,7 +241,7 @@ const Checkout = () => {
                                                 <p className="text-[#9CA3AF] text-[11px] font-bold mt-0.5 tracking-wide">{item.grind} • {item.roast}</p>
                                                 <p className="text-[#111827] text-[11px] font-black mt-1">Qty: {item.quantity}</p>
                                             </div>
-                                            <div className="font-black text-[#111827] text-[15px]">${(item.price * item.quantity).toFixed(2)}</div>
+                                            <div className="font-black text-[#111827] text-[15px]">₹{(item.price * item.quantity).toFixed(2)}</div>
                                         </div>
                                     ))}
                                 </div>
@@ -249,20 +249,20 @@ const Checkout = () => {
                                 {/* Price Breakdown */}
                                 <div className="border-t border-[#F3F4F6] pt-5 space-y-3 mb-8">
                                     <div className="flex justify-between text-[13px] font-bold text-[#9CA3AF]">
-                                        <p>Subtotal</p><p className="text-[#4B5563] font-black">${subtotal.toFixed(2)}</p>
+                                        <p>Subtotal</p><p className="text-[#4B5563] font-black">₹{subtotal.toFixed(2)}</p>
                                     </div>
                                     <div className="flex justify-between text-[13px] font-bold text-[#9CA3AF]">
-                                        <p>Taxes (8%)</p><p className="text-[#4B5563] font-black">${estTax.toFixed(2)}</p>
+                                        <p>Taxes (8%)</p><p className="text-[#4B5563] font-black">₹{estTax.toFixed(2)}</p>
                                     </div>
                                     <div className="flex justify-between text-[13px] font-bold text-[#9CA3AF]">
-                                        <p>Service Fee</p><p className="text-[#4B5563] font-black">$0.00</p>
+                                        <p>Service Fee</p><p className="text-[#4B5563] font-black">₹0.00</p>
                                     </div>
                                 </div>
 
                                 {/* Total */}
                                 <div className="flex justify-between items-end mb-8 pt-2">
                                     <h4 className="text-[20px] font-black text-[#111827]">Total</h4>
-                                    <p className="text-[32px] font-black text-[#111827] leading-none tracking-tight">${total.toFixed(2)}</p>
+                                    <p className="text-[32px] font-black text-[#111827] leading-none tracking-tight">₹{total.toFixed(2)}</p>
                                 </div>
 
                                 {/* Place Order CTA */}
