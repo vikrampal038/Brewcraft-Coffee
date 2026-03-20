@@ -49,30 +49,12 @@ const Roster = () => {
           {/* Maine Heading part */}
           <div className=" w-full">
             <h1 className="subHeading text-[#D46c11] font-sans">The Roaster's Choice</h1>
-          </div>
-          {/* subHeading and Button part */}
-          <div className="w-full flex flex-col sm:flex-row items-end-safe sm:justify-between sm:items-center gap-3">
             <h2 className="mainHeading w-full sm:w-1/2 font-serif">Signature Coffees</h2>
-            <div className="flex flex-wrap justify-end gap-3 sm:gap-5 border-b border-[#EAEAEA] pb-2 w-full sm:w-auto">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => scrollToCategory(cat)}
-                  className={`text-[12px] xl:text-[13px] font-bold tracking-[0.15em] uppercase transition-colors relative pb-2 ${activeCategory === cat ? "text-[#0A0A0A]" : "text-[#A3A3A3] hover:text-[#0A0A0A]"
-                    }`}
-                >
-                  {cat}
-                  {activeCategory === cat && (
-                    <span className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-[#0A0A0A]" />
-                  )}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
 
         {/* Category Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-8 w-full mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-8 w-full">
           {RosterData.map((item, index) => {
             return (
               <div key={index} className="group" onClick={() => scrollToCategory(item.category)}>
@@ -104,41 +86,6 @@ const Roster = () => {
               </div>
             );
           })}
-        </div>
-
-        {/* Category Sections (same scroll behavior as Menu page) */}
-        <div className="mt-16">
-          {menuData.map((sectionData) => (
-            <section
-              key={sectionData.category}
-              id={`home-${categoryId(sectionData.category)}`}
-              className="mt-16"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[#EAEAEA] pb-4 mb-8">
-                <h3 className="text-[24px] sm:text-[28px] font-black tracking-tight text-[#0A0A0A] uppercase mb-2 sm:mb-0 leading-none">
-                  {sectionData.category}
-                </h3>
-                <span className="text-[11px] font-bold tracking-[0.15em] text-[#A3A3A3] uppercase">
-                  {sectionData.subtitle}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                {sectionData.items.slice(0, 3).map((menuItem) => (
-                  <MenuItemCard key={menuItem.id} item={menuItem} />
-                ))}
-              </div>
-
-              <div className="mt-8 flex justify-center">
-                <button
-                  onClick={() => handleViewMore(sectionData.category)}
-                  className="px-6 py-2 border rounded-full bg-transparent border-[#D46c11] text-[#D46c11] font-bold hover:bg-[#D46c11] hover:text-white transition-all duration-700 ease-in-out"
-                >
-                  View All {sectionData.category}
-                </button>
-              </div>
-            </section>
-          ))}
         </div>
       </div>
     </section>
