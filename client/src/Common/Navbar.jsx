@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { ShoppingCart } from "lucide-react";
 import { CartContext } from "../Context/CartContext";
+import { useUser } from "@clerk/clerk-react";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -11,10 +12,10 @@ const navLinks = [
   { name: "Contact", path: "/contact" },
   // { name: "Reservation", path: "/table-reservation" },
 ];
-
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { getCartCount } = useContext(CartContext);
+  const { isSignedIn } = useUser();
 
   return (
     <div className="cart-shadow fixed top-0 left-0 w-full bg-white h-18 z-40">
@@ -40,14 +41,19 @@ const Navbar = () => {
 
         {/* Desktop CTA & Cart (ONLY xl and above) */}
         <div className="hidden xl:flex items-center gap-6">
-          <Link to="/cart" className="relative group p-2 hover:text-[#D46C11] transition-colors">
-            <ShoppingCart size={24} strokeWidth={2} />
-            {getCartCount() > 0 && (
-              <span className="absolute top-0 right-0 bg-[#D46C11] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center translate-x-1 -translate-y-1 shadow-sm">
-                {getCartCount()}
-              </span>
-            )}
-          </Link>
+          {isSignedIn && (
+            <Link
+              to="/cart"
+              className="relative group p-2 hover:text-[#D46C11] transition-colors"
+            >
+              <ShoppingCart size={24} strokeWidth={2} />
+              {getCartCount() > 0 && (
+                <span className="absolute top-0 right-0 bg-[#D46C11] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center translate-x-1 -translate-y-1 shadow-sm">
+                  {getCartCount()}
+                </span>
+              )}
+            </Link>
+          )}
 
           <div className="cart-shadow relative group px-5 py-1.5 overflow-hidden w-fit text-center border rounded-full hover:scale-110 transition-all duration-700">
             <span className="absolute inset-0 bg-[#A689663f] -translate-x-full group-hover:translate-x-0 transition-transform duration-700 z-0" />
