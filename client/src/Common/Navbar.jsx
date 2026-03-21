@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { HiMenuAlt3, HiX, HiOutlineShoppingBag } from "react-icons/hi";
 import { CartContext } from "../Context/CartContext";
 import { motion } from "framer-motion";
+import { useUser } from "@clerk/clerk-react";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -10,11 +11,11 @@ const navLinks = [
   { name: "Menu", path: "/menu" },
   { name: "Our Specials", path: "/specials" },
 ];
-
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { cartItems } = useContext(CartContext);
+  const { isSignedIn } = useUser();
 
   const cartCount = cartItems?.length ? cartItems.reduce((acc, item) => acc + item.quantity, 0) : 0;
 
@@ -54,55 +55,64 @@ const Navbar = () => {
 
         {/* Desktop CTA & Cart (ONLY xl and above) */}
         <div className="hidden xl:flex items-center gap-6">
-          <Link to="/cart" className="text-white hover:text-[#e09825] transition-colors">
-            <motion.div 
-              key={cartCount}
-              initial={{ scale: 1 }}
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 0.3 }}
-              className="relative flex items-center justify-center"
-            >
-              <HiOutlineShoppingBag className="text-2xl" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-[#e09825] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
-                  {cartCount}
-                </span>
-              )}
-            </motion.div>
-          </Link>
-          <Link
-            to="/login"
-            className="text-white hover:text-[#e09825] transition-colors font-medium text-[15px]"
-          >
-            Sign In
-          </Link>
+          {isSignedIn && (
+            <Link to="/cart" className="text-white hover:text-[#e09825] transition-colors">
+              <motion.div
+                key={cartCount}
+                initial={{ scale: 1 }}
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 0.3 }}
+                className="relative flex items-center justify-center"
+              >
+                <HiOutlineShoppingBag className="text-2xl" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1.5 -right-1.5 bg-[#e09825] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                    {cartCount}
+                  </span>
+                )}
+              </motion.div>
+            </Link>
+          )}
 
-          <Link
-            to="/register"
-            className="bg-[#e09825] hover:bg-[#c68520] text-white px-6 py-2 rounded-full font-medium text-[15px] transition-all duration-300 shadow-md shadow-black/20"
-          >
-            Sign Up
-          </Link>
+          {!isSignedIn && (
+            <Link
+              to="/login"
+              className="text-white hover:text-[#e09825] transition-colors font-medium text-[15px]"
+            >
+              Sign In
+            </Link>
+          )}
+
+          {!isSignedIn && (
+            <Link
+              to="/register"
+              className="bg-[#e09825] hover:bg-[#c68520] text-white px-6 py-2 rounded-full font-medium text-[15px] transition-all duration-300 shadow-md shadow-black/20"
+            >
+              Sign Up
+            </Link>
+          )}
         </div>
 
         {/* Mobile / Tablet Menu & Cart */}
         <div className="xl:hidden flex items-center gap-4 text-white">
-          <Link to="/cart" className="hover:text-[#e09825] transition-colors mt-1">
-            <motion.div 
-              key={cartCount}
-              initial={{ scale: 1 }}
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 0.3 }}
-              className="relative flex items-center justify-center"
-            >
-              <HiOutlineShoppingBag className="text-2xl" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-[#e09825] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
-                  {cartCount}
-                </span>
-              )}
-            </motion.div>
-          </Link>
+          {isSignedIn && (
+            <Link to="/cart" className="hover:text-[#e09825] transition-colors mt-1">
+              <motion.div
+                key={cartCount}
+                initial={{ scale: 1 }}
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 0.3 }}
+                className="relative flex items-center justify-center"
+              >
+                <HiOutlineShoppingBag className="text-2xl" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1.5 -right-1.5 bg-[#e09825] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                    {cartCount}
+                  </span>
+                )}
+              </motion.div>
+            </Link>
+          )}
           <button
             onClick={() => setMenuOpen(true)}
             className="text-3xl"
@@ -136,20 +146,24 @@ const Navbar = () => {
           ))}
 
           <div className="flex flex-col items-center gap-4 mt-8 w-full px-10">
-            <Link
-              to="/login"
-              onClick={() => setMenuOpen(false)}
-              className="text-white hover:text-[#e09825] transition-colors py-2"
-            >
-              Sign In
-            </Link>
-            <Link
-              to="/register"
-              onClick={() => setMenuOpen(false)}
-              className="bg-[#e09825] hover:bg-[#c68520] text-white px-8 py-3 rounded-full w-full max-w-xs text-center transition-all duration-300"
-            >
-              Sign Up
-            </Link>
+            {!isSignedIn && (
+              <Link
+                to="/login"
+                onClick={() => setMenuOpen(false)}
+                className="text-white hover:text-[#e09825] transition-colors py-2"
+              >
+                Sign In
+              </Link>
+            )}
+            {!isSignedIn && (
+              <Link
+                to="/register"
+                onClick={() => setMenuOpen(false)}
+                className="bg-[#e09825] hover:bg-[#c68520] text-white px-8 py-3 rounded-full w-full max-w-xs text-center transition-all duration-300"
+              >
+                Sign Up
+              </Link>
+            )}
           </div>
         </div>
       </div>
