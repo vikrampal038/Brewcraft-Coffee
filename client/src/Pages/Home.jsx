@@ -3,9 +3,11 @@ import HomeHero from "../Components/Home/HomeHero";
 import Premium from "../Components/Home/Premium";
 import Reserve from "../Components/Home/Reserve";
 import Roster from "../Components/Home/Roster";
+import CoffeeFeatures from "../Components/Home/CoffeeFeatures";
+import PerfectCupCta from "../Components/Home/PerfectCupCta";
 import SingleOrigin from "../Components/Home/SingleOrigin";
 import Touch from "../Components/Home/Touch";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion";   
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
@@ -15,20 +17,24 @@ const fadeInUp = {
 const Home = () => {
   return (
     <div className="w-full">
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeInUp}>
-        <HomeHero />
-      </motion.div>
+      <HomeHero />
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeInUp}>
         <SingleOrigin />
       </motion.div>
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeInUp}>
         <Premium />
       </motion.div>
+  
+      <CoffeeFeatures />
+      
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeInUp}>
         <Roster />
       </motion.div>
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeInUp}>
         <Reserve />
+      </motion.div>
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeInUp}>
+        <PerfectCupCta />
       </motion.div>
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeInUp}>
         <Touch />

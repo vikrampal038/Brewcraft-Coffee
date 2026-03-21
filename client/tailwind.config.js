@@ -14,8 +14,10 @@ export default {
         caramel: "#C68F5D",
       },
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui"],
-        serif: ["Playfair Display", "ui-serif", "Georgia"],
+        sans: ["Poppins", "ui-sans-serif", "system-ui"],
+        serif: ["Nunito", "ui-serif", "Georgia"],
+        mono: ["Iosevka Charon Mono", "ui-monospace", "SFMono-Regular"],
+        dancing: ["Dancing Script", "cursive"],
       },
     },
   },

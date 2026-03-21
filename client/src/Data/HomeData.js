@@ -43,18 +43,35 @@ export const RosterData =[
 
 export const PremiumData = [
     {
-        icons:RiCupFill,
-        title:"Master Baristas",
-        description:"Our Team undergoes rigorous SCA-certified traning to ensure every pour is perfect and consistent"
+        id: 1,
+        title: "COFFE LATTE",
+        Image: "/src/Assets/roaster1.png",
+        rating: 4.5,
+        volume: "160 ml",
+        price: "₹100",
     },
     {
-        icons:MdEco,
-        title:"Master Baristas",
-        description:"Our Team undergoes rigorous SCA-certified traning to ensure every pour is perfect and consistent"
+        id: 2,
+        title: "CAPPUCCINO",
+        Image: "/src/Assets/roaster2.png",
+        rating: 4.6,
+        volume: "160 ml",
+        price: "₹150",
     },
     {
-        icons:MdWorkspacePremium ,
-        title:"Master Baristas",
-        description:"Our Team undergoes rigorous SCA-certified traning to ensure every pour is perfect and consistent"
+        id: 3,
+        title: "CORTADO",
+        Image: "/src/Assets/roaster3.png",
+        rating: 4.6,
+        volume: "160 ml",
+        price: "₹200",
+    },
+    {
+        id: 4,
+        title: "ESPRESSO",
+        Image: "/src/Assets/roaster4.png",
+        rating: 4.8,
+        volume: "120 ml",
+        price: "₹300",
     }
 ]
