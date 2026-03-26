@@ -55,24 +55,22 @@ const Navbar = () => {
 
         {/* Desktop CTA & Cart (ONLY xl and above) */}
         <div className="hidden xl:flex items-center gap-6">
-          {isSignedIn && (
-            <Link to="/cart" className="text-white hover:text-[#e09825] transition-colors">
-              <motion.div
-                key={cartCount}
-                initial={{ scale: 1 }}
-                animate={{ scale: [1, 1.3, 1] }}
-                transition={{ duration: 0.3 }}
-                className="relative flex items-center justify-center"
-              >
-                <HiOutlineShoppingBag className="text-2xl" />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 bg-[#e09825] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
-                    {cartCount}
-                  </span>
-                )}
-              </motion.div>
-            </Link>
-          )}
+          <Link to="/cart" className="text-white hover:text-[#e09825] transition-colors">
+            <motion.div
+              key={cartCount}
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 0.3 }}
+              className="relative flex items-center justify-center"
+            >
+              <HiOutlineShoppingBag className="text-2xl" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 bg-[#e09825] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                  {cartCount}
+                </span>
+              )}
+            </motion.div>
+          </Link>
 
           {!isSignedIn && (
             <Link
@@ -95,24 +93,22 @@ const Navbar = () => {
 
         {/* Mobile / Tablet Menu & Cart */}
         <div className="xl:hidden flex items-center gap-4 text-white">
-          {isSignedIn && (
-            <Link to="/cart" className="hover:text-[#e09825] transition-colors mt-1">
-              <motion.div
-                key={cartCount}
-                initial={{ scale: 1 }}
-                animate={{ scale: [1, 1.3, 1] }}
-                transition={{ duration: 0.3 }}
-                className="relative flex items-center justify-center"
-              >
-                <HiOutlineShoppingBag className="text-2xl" />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 bg-[#e09825] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
-                    {cartCount}
-                  </span>
-                )}
-              </motion.div>
-            </Link>
-          )}
+          <Link to="/cart" className="hover:text-[#e09825] transition-colors mt-1">
+            <motion.div
+              key={cartCount}
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 0.3 }}
+              className="relative flex items-center justify-center"
+            >
+              <HiOutlineShoppingBag className="text-2xl" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 bg-[#e09825] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                  {cartCount}
+                </span>
+              )}
+            </motion.div>
+          </Link>
           <button
             onClick={() => setMenuOpen(true)}
             className="text-3xl"
