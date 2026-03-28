@@ -1,11 +1,11 @@
 import React from 'react'
 import Mainrouter from './appRoute/Mainrouter'
-import Navbar from './Common/Navbar'
-import Footer from './Common/Footer'
-import ScrollToTop from './Common/ScrollToTop'
+import Navbar from './Common/User/Navbar'
+import Footer from './Common/User/Footer'
+import ScrollToTop from './Common/User/ScrollToTop'
 import { CartProvider } from './Context/CartContext'
 import { AuthProvider } from './Context/AuthContext'
-import LoginModal from './Components/Auth/LoginModal'
+import LoginModal from './Components/User/Auth/LoginModal'
 
 const App = () => {
   return (

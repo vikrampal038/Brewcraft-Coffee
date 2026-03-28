@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useState, useEffect } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useAuthModal } from './AuthContext';
@@ -47,7 +48,8 @@ export const CartProvider = ({ children }) => {
     // Add item to cart
     const addToCart = (product, quantity = 1, options = { grind: 'Whole Bean', roast: 'Light Roast' }) => {
         if (!isSignedIn) {
-            openLogin();
+            const path = typeof window !== 'undefined' ? window.location.pathname : null;
+            requireAuth(path);
             return;
         }
         setCartItems(prevItems => {
