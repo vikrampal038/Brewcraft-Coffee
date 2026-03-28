@@ -1,10 +1,16 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useState, useEffect } from 'react';
+import { useUser } from '@clerk/clerk-react';
+import { useAuthModal } from './AuthContext';
 
 export const CartContext = createContext();
 
 const USD_TO_INR = 91.93;
 
 export const CartProvider = ({ children }) => {
+    const { isSignedIn } = useUser();
+    const { requireAuth } = useAuthModal();
+
     // Try to load cart from local storage on mount
     const [cartItems, setCartItems] = useState(() => {
         const savedCart = localStorage.getItem('brewcraft_cart');
@@ -41,6 +47,11 @@ export const CartProvider = ({ children }) => {
 
     // Add item to cart
     const addToCart = (product, quantity = 1, options = { grind: 'Whole Bean', roast: 'Light Roast' }) => {
+        if (!isSignedIn) {
+            const path = typeof window !== 'undefined' ? window.location.pathname : null;
+            requireAuth(path);
+            return;
+        }
         setCartItems(prevItems => {
             const existingItemIndex = prevItems.findIndex(item => item.id === product.id && item.grind === options.grind && item.roast === options.roast);
 

@@ -4,12 +4,14 @@ const productSchema= new mongoose.Schema({
     name:{type:String, required:true},
     description:{type:String, required:true},
     price:{type:Number, required:true},
+    variants: [{
+        size: { type: String, required: true },
+        price: { type: Number, required: true }
+    }],
     category:{type:String, required:true},
     imageUrl:{type:String, required:true},
-    isAvailable:{type:Boolean, default:true},
-    createdAt:{type:Date, default:Date.now},
-    updatedAt:{type:Date, default:Date.now}
-})
+    isAvailable:{type:Boolean, default:true}
+}, { timestamps: true });
 
 productSchema.index({ name: 1 });
 productSchema.index({ category: 1 });

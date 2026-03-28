@@ -1,0 +1,108 @@
+
+F:\Anshika\Brewcraft-Coffee\client\src\Common\Navbar.jsx
+  5:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\About\AboutHero.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\About\AboutLeadership.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\About\AboutPhilosophy.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\About\AboutProcess.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\Home\CoffeeFeatures.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\Home\PerfectCupCta.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\Home\Premium.jsx
+  4:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\Home\Reserve.jsx
+  6:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\Menu\MenuHeader.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\Menu\MenuItemCard.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u             no-unused-vars
+  8:11  error  'navigate' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\ProductDetails\CustomerReviews.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\ProductDetails\ProductDetailsHero.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Components\ProductDetails\RelatedProducts.jsx
+   2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     no-unused-vars
+  14:68  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  12 |     const filteredProducts = allItems.filter(item => item.id !== currentProductId);
+  13 |     // Simple pseudo-random shuffle taking top 4
+> 14 |     const relatedProducts = [...filteredProducts].sort(() => 0.5 - Math.random()).slice(0, 4);
+     |                                                                    ^^^^^^^^^^^^^ Cannot call impure function
+  15 |
+  16 |     return (
+  17 |         <div className="w-full max-w-7xl mx-auto px-5 sm:px-10 lg:px-20 py-24">  react-hooks/purity
+
+F:\Anshika\Brewcraft-Coffee\client\src\Context\CartContext.jsx
+  3:14  error  Fast refresh only works when a file only exports components. Move your React context(s) to a separate file  react-refresh/only-export-components
+
+F:\Anshika\Brewcraft-Coffee\client\src\Pages\Cart.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Pages\Checkout.jsx
+  1:39  error  'useEffect' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Pages\Contact.jsx
+  4:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Pages\Home.jsx
+  10:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+F:\Anshika\Brewcraft-Coffee\client\src\Pages\OrderSuccess.jsx
+   3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  11:48  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+   9 |     // Provide fallback dummy data so the UI always works when navigating directly
+  10 |     const orderDetails = location.state || {
+> 11 |         orderNumber: `#BC-${Math.floor(10000 + Math.random() * 90000)}`,
+     |                                                ^^^^^^^^^^^^^ Cannot call impure function
+  12 |         orderDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+  13 |         items: [
+  14 |             {  react-hooks/purity
+
+F:\Anshika\Brewcraft-Coffee\client\src\Pages\ProductDetails.jsx
+   3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 no-unused-vars
+  27:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  25 |
+  26 |         if (foundProduct) {
+> 27 |             setProduct(foundProduct);
+     |             ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  28 |             setLoading(false);
+  29 |         } else {
+  30 |             // If product not found (e.g invalid url), redirect back to menu  react-hooks/set-state-in-effect
+
+F:\Anshika\Brewcraft-Coffee\client\src\Pages\TableReservation.jsx
+  1:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+✖ 27 problems (27 errors, 0 warnings)
+

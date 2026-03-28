@@ -2,11 +2,12 @@ import express from 'express';
 import dotenv from 'dotenv';
 import authRouter from "./routers/auth.route.js";
 import orderRouter from "./routers/order.route.js";
+import productRouter from "./routers/product.route.js";
 const app = express();
 dotenv.config();
 
 app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/order", orderRouter);
-
+app.use("/product", productRouter);
 export default app;

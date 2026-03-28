@@ -3,13 +3,14 @@ import Product from "../../models/product.model.js";
 const updateProduct = async(req,res)=>{
 
     const {productId} = req.params;
-    const {name,description,price,category, imageUrl, isAvailable} = req.body;
+    const {name,description,price,variants,category, imageUrl, isAvailable} = req.body;
 
     try {
         const updatedProduct = await Product.findByIdAndUpdate(productId, {
             name,
             description,
             price,
+            variants,
             category,
             imageUrl,
             isAvailable

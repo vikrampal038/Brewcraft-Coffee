@@ -5,6 +5,7 @@ import Product from "../../models/product.model.js";
         name,
         description,
         price,
+        variants, // Support for different sizes
         category,
         imageUrl,
         isAvailable = true
@@ -25,6 +26,7 @@ return res.status(400).json({ message: "All fields are required" });
             name,
             category,
             description,
+            variants: variants || [],
             price,
             imageUrl,
             isAvailable

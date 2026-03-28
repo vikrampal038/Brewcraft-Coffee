@@ -19,10 +19,8 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  role: { type: String, enum: ["user", "admin", "employee"] },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
-});
+  role: { type: String, enum: ["user", "admin", "employee"], default: "user" },
+}, { timestamps: true });
 
 const User  = mongoose.model("User",userSchema);
 
