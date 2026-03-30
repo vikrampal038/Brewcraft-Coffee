@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const Profile = () => {
     const { user, signOut } = useAuth();
     const navigate = useNavigate();
+    const joinedYear = user?.createdAt ? new Date(user.createdAt).getFullYear() : new Date().getFullYear();
 
     const handleLogout = async () => {
         await signOut();
@@ -39,7 +40,7 @@ const Profile = () => {
                         >
                             {user.fullName || 'Brewcraft Connoisseur'}
                         </h1>
-                        <p className="text-[#7A7A7A] font-medium mb-6">Premium Member since {new Date(user.createdAt).getFullYear()}</p>
+                        <p className="text-[#7A7A7A] font-medium mb-6">Premium Member since {joinedYear}</p>
                         
                         <div className="flex flex-wrap justify-center md:justify-start gap-3">
                             <button 

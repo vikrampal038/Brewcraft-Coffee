@@ -1,26 +1,11 @@
 import React, { useState } from "react";
 import { Mail, Lock, User, Phone, Loader } from "lucide-react";
 import { registerSchema } from "../../../utils/validators/authSchema";
-import { getErrorMessage } from "../../../utils/authErrors";
 import { useAuthModal } from "../../../Context/AuthContext";
 import api from "../../../lib/axios";
 
-/**
- * Formats a phone number to E.164 format.
- * Default country code: +91
- */
-const formatPhoneNumber = (phone) => {
-    let cleaned = phone.replace(/\s+/g, '').replace(/[()-]/g, '');
-    if (!cleaned.startsWith('+')) {
-        if (cleaned.length === 10) return `+91${cleaned}`;
-        if (cleaned.length === 12 && cleaned.startsWith('91')) return `+${cleaned}`;
-        return cleaned; 
-    }
-    return cleaned;
-};
-
 const RegisterForm = () => {
-    const { setAuthView, requireAuth, openLogin } = useAuthModal();
+    const { setAuthView } = useAuthModal();
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -41,64 +26,46 @@ const RegisterForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("before loading");
-        
         if (loading) return;
-console.log("after loading");
 
         setLoading(true);
         setError("");
         setFieldErrors({});
 
-        // Zod validation
-        console.log(formData);
-        
         const result = registerSchema.safeParse(formData);
-        console.log(result.error);
-        
         if (!result.success) {
             const errors = {};
-            result.error.ZodError?.forEach((err) => {
+            result.error.issues.forEach((err) => {
                 errors[err.path[0]] = err.message;
-                console.log(err.message);
-                
             });
-            console.log("after the for each loop ");
-            
             setFieldErrors(errors);
             setLoading(false);
-            console.log("just before the zod return ");
-            
             return;
-            ;
-            
-
         }
-        console.log("after the zod validation");
-        
-
-        const formattedPhone = formData.phone;
 
         try {
-            const res = await api.post('/auth/register', {
+            const { data } = await api.post('/auth/register', {
                 name: formData.name,
                 email: formData.email,
-                phone: formattedPhone,
+                phone: formData.phone,
                 password: formData.password
             });
-            console.log("bhai register ke liye backend me call hua hai ");
-            
 
-            // Set local state since the backend sets httpOnly cookie natively on register
             localStorage.setItem("isAuthenticated", "true");
-            localStorage.setItem("user", JSON.stringify({ name: formData.name, email: formData.email }));
-
-            // If OTP isn't required by your custom backend, directly log them in or redirect to login.
-            console.log("Register Success:", res.data);
-            window.location.reload(); // Reload or clear state depending on how you want to handle auto-login
+            localStorage.setItem(
+                "user",
+                JSON.stringify({
+                    name: data?.user?.name || formData.name,
+                    email: data?.user?.email || formData.email,
+                    phone: data?.user?.phone || formData.phone,
+                    createdAt: data?.user?.createdAt || new Date().toISOString(),
+                    imageUrl: data?.user?.imageUrl || "",
+                    coffeeStory: data?.user?.coffeeStory || "",
+                })
+            );
+            window.location.reload();
 
         } catch (err) {
-            console.log("Registration Error:", err);
             setError(err.response?.data?.message || err.message || "An error occurred during registration");
         } finally {
             setLoading(false);

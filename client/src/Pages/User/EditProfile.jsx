@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useUser } from "@clerk/clerk-react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, MoreVertical, CheckCircle2 } from 'lucide-react';
+import { useAuth } from "../../Hooks/useAuth";
 
 const EditProfile = () => {
-  const { user, isLoaded } = useUser();
+  const { user, isLoaded } = useAuth();
   const navigate = useNavigate();
   const fileInputRef = React.useRef(null);
   const [formData, setFormData] = useState({
@@ -35,7 +35,16 @@ const EditProfile = () => {
     const file = e.target.files?.[0];
     if (file) {
       try {
-        await user.setProfileImage({ file });
+        const reader = new FileReader();
+        reader.onload = () => {
+          const nextUser = {
+            ...user,
+            imageUrl: reader.result,
+          };
+          localStorage.setItem("user", JSON.stringify(nextUser));
+          window.location.reload();
+        };
+        reader.readAsDataURL(file);
       } catch (error) {
         console.error("Image upload error:", error);
         alert("Failed to upload image.");
@@ -47,18 +56,22 @@ const EditProfile = () => {
     if (isSaving) return;
     setIsSaving(true);
     try {
-      const names = formData.fullName.trim().split(" ");
-      const firstName = names[0];
-      const lastName = names.slice(1).join(" ");
-
-      await user.update({
-        firstName,
-        lastName,
+      const nextUser = {
+        ...user,
+        name: formData.fullName,
+        fullName: formData.fullName,
+        phone: formData.phoneNumber,
+        primaryPhoneNumber: {
+          phoneNumber: formData.phoneNumber,
+        },
+        coffeeStory: formData.coffeeStory,
         unsafeMetadata: {
-          ...user.unsafeMetadata,
+          ...(user?.unsafeMetadata || {}),
           coffeeStory: formData.coffeeStory,
         },
-      });
+      };
+
+      localStorage.setItem("user", JSON.stringify(nextUser));
 
       setShowToast(true);
       setTimeout(() => {

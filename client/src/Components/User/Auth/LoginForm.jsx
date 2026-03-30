@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Mail, Lock, Eye, EyeOff, Loader } from "lucide-react";
 import { loginSchema } from "../../../utils/validators/authSchema";
-import { getErrorMessage } from "../../../utils/authErrors";
 import { useNavigate } from "react-router-dom";
 import { useAuthModal } from "../../../Context/AuthContext";
 import api from "../../../lib/axios";
@@ -43,14 +42,23 @@ const LoginForm = () => {
         }
 
         try {
-            const res = await api.post('/auth/login', {
+            const { data } = await api.post('/auth/login', {
                 email: formData.identifier,
                 password: formData.password,
             });
 
-            // Set local state since cookie is httpOnly
             localStorage.setItem("isAuthenticated", "true");
-            localStorage.setItem("user", JSON.stringify({ email: formData.identifier }));
+            localStorage.setItem(
+                "user",
+                JSON.stringify({
+                    name: data?.user?.name || data?.user?.fullName || formData.identifier.split("@")[0],
+                    email: data?.user?.email || formData.identifier,
+                    phone: data?.user?.phone || "",
+                    createdAt: data?.user?.createdAt || new Date().toISOString(),
+                    imageUrl: data?.user?.imageUrl || "",
+                    coffeeStory: data?.user?.coffeeStory || "",
+                })
+            );
 
             closeAuthModal();
             if (redirectPath) {

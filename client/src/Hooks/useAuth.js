@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import api from "../lib/axios";
-import { useNavigate } from "react-router-dom";
 
 /**
  * Custom hook to unify authentication states and actions using custom backend.
@@ -11,6 +10,27 @@ export const useAuth = () => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
+        const normalizeUser = (parsedUser) => ({
+            ...parsedUser,
+            fullName: parsedUser?.fullName || parsedUser?.name || "User",
+            primaryEmailAddress: {
+                emailAddress: parsedUser?.primaryEmailAddress?.emailAddress || parsedUser?.email || "",
+            },
+            primaryPhoneNumber: {
+                phoneNumber: parsedUser?.primaryPhoneNumber?.phoneNumber || parsedUser?.phone || "",
+            },
+            unsafeMetadata: {
+                ...(parsedUser?.unsafeMetadata || {}),
+                coffeeStory: parsedUser?.unsafeMetadata?.coffeeStory || parsedUser?.coffeeStory || "",
+            },
+            imageUrl:
+                parsedUser?.imageUrl ||
+                `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                    parsedUser?.fullName || parsedUser?.name || "User"
+                )}&background=random`,
+            createdAt: parsedUser?.createdAt || new Date().toISOString(),
+        });
+
         const checkAuth = () => {
             const isAuth = localStorage.getItem("isAuthenticated") === "true";
             const storedUser = localStorage.getItem("user");
@@ -19,14 +39,8 @@ export const useAuth = () => {
                 setIsSignedIn(true);
                 try {
                     const parsedUser = JSON.parse(storedUser);
-                    // Match Clerk's user object structure for the UI
-                    setUser({
-                        ...parsedUser,
-                        fullName: parsedUser.name || "User",
-                        primaryEmailAddress: { emailAddress: parsedUser.email },
-                        imageUrl: `https://ui-avatars.com/api/?name=${parsedUser.name || "User"}&background=random`
-                    });
-                } catch (e) {
+                    setUser(normalizeUser(parsedUser));
+                } catch {
                     setUser(null);
                 }
             } else {
@@ -40,13 +54,15 @@ export const useAuth = () => {
     }, []);
 
     const signOut = async () => {
-        // Technically we should clear the httpOnly cookie from backend too if there was a logout route,
-        // but for frontend logic:
         localStorage.removeItem("isAuthenticated");
         localStorage.removeItem("user");
         setIsSignedIn(false);
         setUser(null);
-        await api.post("/auth/logout");
+        try {
+            await api.post("/auth/logout");
+        } catch (error) {
+            console.error("Logout error:", error);
+        }
     };
 
     return {
