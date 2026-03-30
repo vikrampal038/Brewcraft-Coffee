@@ -12,6 +12,7 @@ import OrderSuccess from '../Pages/User/OrderSuccess'
 import OrderHistory from '../Pages/User/OrderHistory'
 import ReservationHistory from '../Pages/User/ReservationHistory'
 import Profile from '../Pages/User/Profile'
+import EditProfile from '../Pages/User/EditProfile'
 import ProtectedRoute from '../Components/User/Auth/ProtectedRoute'
 
 const MainRote = () => {
@@ -32,6 +33,7 @@ const MainRote = () => {
         <Route path='/order-history' element={<ProtectedRoute><OrderHistory /></ProtectedRoute>} />
         <Route path='/reservation-history' element={<ProtectedRoute><ReservationHistory /></ProtectedRoute>} />
         <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path='/edit-profile' element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
       </Routes>
     </>
   )

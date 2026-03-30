@@ -43,7 +43,10 @@ const Profile = () => {
                         <p className="text-[#7A7A7A] font-medium mb-6">Premium Member since {new Date(user.createdAt).getFullYear()}</p>
                         
                         <div className="flex flex-wrap justify-center md:justify-start gap-3">
-                            <button className="h-10 px-6 bg-[#D46C11] text-white text-[13px] font-black uppercase tracking-wider rounded-full hover:bg-[#B5590D] transition-all flex items-center gap-2">
+                            <button 
+                                onClick={() => navigate('/edit-profile')}
+                                className="h-10 px-6 bg-[#D46C11] text-white text-[13px] font-black uppercase tracking-wider rounded-full hover:bg-[#B5590D] transition-all flex items-center gap-2"
+                            >
                                 <Edit3 size={14} /> Edit Profile
                             </button>
                             <button 
