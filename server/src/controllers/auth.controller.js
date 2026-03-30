@@ -36,7 +36,7 @@ export const registerUser = async (req, res) => {
       });
     }
 
-    const isUserExist = await User.findOne({ email });
+    const isUserExist = await User.findOne({ $or: [{ email }, { phone: phoneString }] });
 
     if (isUserExist) {
       return res.status(400).json({ message: "User already exists" });
@@ -87,3 +87,8 @@ export const loginUser = async (req, res) => {
     });
   }
 };
+
+export const logoutUser = (req, res) => {
+  res.clearCookie("token");
+  return res.status(200).json({ message: "User logged out successfully" });
+}

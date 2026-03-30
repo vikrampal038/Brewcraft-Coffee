@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { useSignIn } from "@clerk/clerk-react";
 import { Mail, Lock, Eye, EyeOff, Loader } from "lucide-react";
 import { loginSchema } from "../../../utils/validators/authSchema";
 import { getErrorMessage } from "../../../utils/authErrors";
 import { useNavigate } from "react-router-dom";
 import { useAuthModal } from "../../../Context/AuthContext";
+import api from "../../../lib/axios";
 
 const LoginForm = () => {
-    const { isLoaded, signIn, setActive } = useSignIn();
     const { setAuthView, closeAuthModal, redirectPath, clearRedirectPath } = useAuthModal();
     const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ const LoginForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!isLoaded || loading) return;
+        if (loading) return;
 
         setLoading(true);
         setError("");
@@ -44,23 +43,24 @@ const LoginForm = () => {
         }
 
         try {
-            const attempt = await signIn.create({
-                identifier: formData.identifier,
+            const res = await api.post('/auth/login', {
+                email: formData.identifier,
                 password: formData.password,
             });
 
-            if (attempt.status === "complete") {
-                await setActive({ session: attempt.createdSessionId });
-                closeAuthModal();
-                if (redirectPath) {
-                    navigate(redirectPath);
-                    clearRedirectPath();
-                }
+            // Set local state since cookie is httpOnly
+            localStorage.setItem("isAuthenticated", "true");
+            localStorage.setItem("user", JSON.stringify({ email: formData.identifier }));
+
+            closeAuthModal();
+            if (redirectPath) {
+                navigate(redirectPath);
+                clearRedirectPath();
             } else {
-                setError("Account needs additional verification. Check your email.");
+                window.location.reload(); // Quick refresh to update state
             }
         } catch (err) {
-            setError(getErrorMessage(err));
+            setError(err.response?.data?.message || err.message || "Invalid credentials");
         } finally {
             setLoading(false);
         }

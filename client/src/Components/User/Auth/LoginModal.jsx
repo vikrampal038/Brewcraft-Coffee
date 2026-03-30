@@ -4,7 +4,6 @@ import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
-import VerifyOTP from "./VerifyOTP";
 
 const LoginModal = () => {
     const { isLoginModalOpen, closeAuthModal, authView, setAuthView } = useAuthModal();
@@ -77,7 +76,7 @@ const LoginModal = () => {
                             >
                                 {authView === 'login' && <LoginForm />}
                                 {authView === 'register' && <RegisterForm />}
-                                {authView === 'verify' && <VerifyOTP />}
+
                             </motion.div>
                         </AnimatePresence>
                     </div>

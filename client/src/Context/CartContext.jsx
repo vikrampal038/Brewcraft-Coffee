@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useState, useEffect } from 'react';
-import { useUser } from '@clerk/clerk-react';
+import { useAuth } from '../Hooks/useAuth';
 import { useAuthModal } from './AuthContext';
 
 export const CartContext = createContext();
@@ -8,7 +8,7 @@ export const CartContext = createContext();
 const USD_TO_INR = 91.93;
 
 export const CartProvider = ({ children }) => {
-    const { isSignedIn } = useUser();
+    const { isSignedIn } = useAuth();
     const { requireAuth } = useAuthModal();
 
     // Try to load cart from local storage on mount

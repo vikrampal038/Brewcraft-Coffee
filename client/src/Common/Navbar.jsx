@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { HiMenuAlt3, HiX, HiOutlineShoppingBag } from "react-icons/hi";
 import { CartContext } from "../Context/CartContext";
 import { motion } from "framer-motion";
-import { useUser } from "@clerk/clerk-react";
+import { useAuth } from "../Hooks/useAuth";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -15,7 +15,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { cartItems } = useContext(CartContext);
-  const { isSignedIn } = useUser();
+  const { isSignedIn } = useAuth();
 
   const cartCount = cartItems?.length ? cartItems.reduce((acc, item) => acc + item.quantity, 0) : 0;
 
@@ -120,7 +120,7 @@ const Navbar = () => {
 
       {/* Mobile / Tablet Menu */}
       <div
-        className={`fixed top-0 right-0 w-full h-screen bg-black/95 backdrop-blur-xl z-50 transform transition-transform duration-500 flex flex-col ${menuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 right-0 w-full h-screen bg-black backdrop-blur-xl z-50 transform transition-transform duration-500 flex flex-col ${menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
         <div className="flex justify-end p-6">

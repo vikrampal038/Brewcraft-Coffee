@@ -1,12 +1,11 @@
 import React from 'react';
-import { useUser, useClerk } from '@clerk/clerk-react';
+import { useAuth } from '../../Hooks/useAuth';
 import { motion } from 'framer-motion';
 import { User, Mail, Phone, Edit3, LogOut, ChevronRight, ShoppingBag, Calendar } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Profile = () => {
-    const { user } = useUser();
-    const { signOut } = useClerk();
+    const { user, signOut } = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = async () => {

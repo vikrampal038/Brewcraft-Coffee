@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useSignUp } from "@clerk/clerk-react";
 import { Mail, Lock, User, Phone, Loader } from "lucide-react";
 import { registerSchema } from "../../../utils/validators/authSchema";
 import { getErrorMessage } from "../../../utils/authErrors";
 import { useAuthModal } from "../../../Context/AuthContext";
+import api from "../../../lib/axios";
 
 /**
  * Formats a phone number to E.164 format.
@@ -14,14 +14,13 @@ const formatPhoneNumber = (phone) => {
     if (!cleaned.startsWith('+')) {
         if (cleaned.length === 10) return `+91${cleaned}`;
         if (cleaned.length === 12 && cleaned.startsWith('91')) return `+${cleaned}`;
-        return cleaned; // Let Clerk validate others
+        return cleaned; 
     }
     return cleaned;
 };
 
 const RegisterForm = () => {
-    const { isLoaded, signUp } = useSignUp();
-    const { setAuthView } = useAuthModal();
+    const { setAuthView, requireAuth, openLogin } = useAuthModal();
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -42,45 +41,65 @@ const RegisterForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!isLoaded || loading) return;
+        console.log("before loading");
+        
+        if (loading) return;
+console.log("after loading");
 
         setLoading(true);
         setError("");
         setFieldErrors({});
 
         // Zod validation
+        console.log(formData);
+        
         const result = registerSchema.safeParse(formData);
+        console.log(result.error);
+        
         if (!result.success) {
             const errors = {};
-            result.error.errors.forEach((err) => {
+            result.error.ZodError?.forEach((err) => {
                 errors[err.path[0]] = err.message;
+                console.log(err.message);
+                
             });
+            console.log("after the for each loop ");
+            
             setFieldErrors(errors);
             setLoading(false);
+            console.log("just before the zod return ");
+            
             return;
-        }
+            ;
+            
 
-        const formattedPhone = formatPhoneNumber(formData.phone);
+        }
+        console.log("after the zod validation");
         
-        // Debug Log
-        const payload = {
-            firstName: formData.name.split(' ')[0],
-            lastName: formData.name.split(' ').slice(1).join(' ') || "Guest",
-            emailAddress: formData.email,
-            phoneNumber: formattedPhone,
-            password: formData.password,
-        };
-        console.log("Register Payload:", payload);
+
+        const formattedPhone = formData.phone;
 
         try {
-            await signUp.create(payload);
+            const res = await api.post('/auth/register', {
+                name: formData.name,
+                email: formData.email,
+                phone: formattedPhone,
+                password: formData.password
+            });
+            console.log("bhai register ke liye backend me call hua hai ");
+            
 
-            // Trigger OTP verification
-            await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
-            setAuthView('verify');
+            // Set local state since the backend sets httpOnly cookie natively on register
+            localStorage.setItem("isAuthenticated", "true");
+            localStorage.setItem("user", JSON.stringify({ name: formData.name, email: formData.email }));
+
+            // If OTP isn't required by your custom backend, directly log them in or redirect to login.
+            console.log("Register Success:", res.data);
+            window.location.reload(); // Reload or clear state depending on how you want to handle auto-login
+
         } catch (err) {
-            console.log("Clerk Error:", err);
-            setError(getErrorMessage(err));
+            console.log("Registration Error:", err);
+            setError(err.response?.data?.message || err.message || "An error occurred during registration");
         } finally {
             setLoading(false);
         }
@@ -124,7 +143,7 @@ const RegisterForm = () => {
                     <label className="text-[11px] font-black text-[#D46C11] uppercase tracking-[0.15em] ml-4">Phone</label>
                     <div className="relative">
                         <Phone className="absolute left-5 top-1/2 -translate-y-1/2 text-[#A3A3A3]" size={18} />
-                        <input name="phone" value={formData.phone} onChange={handleChange} type="text" placeholder="10 Digits" className="w-full h-14 pl-14 bg-[#F4F5F7] border focus:bg-white rounded-full text-sm font-bold transition-all outline-none" />
+                        <input name="phone" value={formData.phone} onChange={handleChange} type="text" placeholder="10 Digits" className={`w-full h-14 pl-14 bg-[#F4F5F7] border focus:bg-white rounded-full text-sm font-bold transition-all outline-none ${fieldErrors.phone ? "border-red-300" : "border-transparent focus:border-[#D46C11]"}`} />
                     </div>
                 </div>
             </div>
@@ -134,14 +153,7 @@ const RegisterForm = () => {
                     <label className="text-[11px] font-black text-[#D46C11] uppercase tracking-[0.15em] ml-4">Password</label>
                     <div className="relative">
                         <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-[#A3A3A3]" size={18} />
-                        <input name="password" value={formData.password} onChange={handleChange} type="password" placeholder="Min 6" className="w-full h-14 pl-14 bg-[#F4F5F7] border focus:bg-white rounded-full text-sm font-bold transition-all outline-none" />
-                    </div>
-                </div>
-                <div className="space-y-1">
-                    <label className="text-[11px] font-black text-[#D46C11] uppercase tracking-[0.15em] ml-4">Verify Pass</label>
-                    <div className="relative">
-                        <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-[#A3A3A3]" size={18} />
-                        <input name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} type="password" placeholder="Match it" className="w-full h-14 pl-14 bg-[#F4F5F7] border focus:bg-white rounded-full text-sm font-bold transition-all outline-none" />
+                        <input name="password" value={formData.password} onChange={handleChange} type="password" placeholder="Min 6" className={`w-full h-14 pl-14 bg-[#F4F5F7] border focus:bg-white rounded-full text-sm font-bold transition-all outline-none ${fieldErrors.password ? "border-red-300" : "border-transparent focus:border-[#D46C11]"}`} />
                     </div>
                 </div>
             </div>
