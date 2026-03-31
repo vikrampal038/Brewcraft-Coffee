@@ -117,10 +117,10 @@ const Navbar = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <ChevronDown
+                  {/* <ChevronDown
                     size={14}
                     className={`text-white transition-transform duration-300 ${profileOpen ? "rotate-180" : ""}`}
-                  />
+                  /> */}
                 </button>
 
                 <AnimatePresence>

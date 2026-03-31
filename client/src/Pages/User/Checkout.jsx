@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, User, CreditCard, Lock, Info, ChevronRight, Apple, X, Footprints, Coffee } from 'lucide-react';
+import { ArrowLeft, User, CreditCard, Lock, Info, ChevronRight, Apple, X, Footprints, Coffee, Eye, EyeOff } from 'lucide-react';
 import { FcGoogle } from 'react-icons/fc';
 import { CartContext } from '../../Context/CartContext';
 
@@ -13,6 +13,7 @@ const Checkout = () => {
     const estTax = subtotal * 0.08;
     const total = subtotal + estTax;
     const [orderType, setOrderType] = useState('pickup');
+    const [showCvv, setShowCvv] = useState(false);
     const [formData, setFormData] = useState({
         fullName: '',
         phone: '',
@@ -199,16 +200,25 @@ const Checkout = () => {
                                         </div>
                                         <div>
                                             <label className="block text-[13px] font-bold text-[#111827] mb-2.5">CVV</label>
-                                            <input
-                                                type="password"
-                                                name="cvv"
-                                                value={formData.cvv}
-                                                onChange={handleInputChange}
-                                                placeholder="123"
-                                                maxLength="4"
-                                                className="w-full bg-white border border-[#E5E7EB] rounded-2xl px-5 py-3.5 text-[15px] font-medium text-[#111827] placeholder:text-[#9CA3AF] placeholder:font-normal focus:outline-none focus:border-[#1D7AF2] focus:ring-1 focus:ring-[#1D7AF2] transition-shadow"
-                                                required
-                                            />
+                                            <div className="relative">
+                                                <input
+                                                    type={showCvv ? "text" : "password"}
+                                                    name="cvv"
+                                                    value={formData.cvv}
+                                                    onChange={handleInputChange}
+                                                    placeholder="123"
+                                                    maxLength="4"
+                                                    className="w-full bg-white border border-[#E5E7EB] rounded-2xl px-5 pr-12 py-3.5 text-[15px] font-medium text-[#111827] placeholder:text-[#9CA3AF] placeholder:font-normal focus:outline-none focus:border-[#1D7AF2] focus:ring-1 focus:ring-[#1D7AF2] transition-shadow"
+                                                    required
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowCvv((prev) => !prev)}
+                                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9CA3AF] hover:text-[#111827] transition-colors"
+                                                >
+                                                    {showCvv ? <EyeOff size={18} strokeWidth={2.25} /> : <Eye size={18} strokeWidth={2.25} />}
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
