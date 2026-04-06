@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { MdAdminPanelSettings, MdPublic } from "react-icons/md";
 import { FaCamera } from "react-icons/fa";
 
@@ -151,10 +152,10 @@ const Footer = () => {
             >
               Terms & Services
             </a>
-            <div className="flex items-center gap-1 hover:text-white transition-colors duration-700">
+            <Link to="/admin" className="flex items-center gap-1 hover:text-white transition-colors duration-700">
               <MdAdminPanelSettings />
               Admin
-            </div>
+            </Link>
           </div>
         </div>
       </div>

@@ -89,36 +89,34 @@ const EditProfile = () => {
   if (!isLoaded || !user) return null;
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white pt-20 pb-12 font-sans selection:bg-[#A68966]/30">
-      <div className="max-w-2xl mx-auto px-4">
+    <div className="min-h-screen bg-[#FCF8F5] text-[#0A0A0A] pt-32 pb-20 font-sans selection:bg-[#D46C11]/30">
+      <div className="max-w-2xl mx-auto px-5 sm:px-10">
         {/* Top Navbar Style Header */}
         <Link
           to="/profile"
-          className="p-2 mb-4  rounded-full transition-colors text-white/70 hover:text-white flex items-center justify-start"
+          className="p-2 mb-4 rounded-full transition-colors text-[#555555] hover:text-[#0A0A0A] flex items-center justify-start w-fit"
         >
-          <ArrowLeft size={22} />
-          {/* <span className="text-lg font-medium tracking-wide text-[#EAEAEA]" style={{ fontFamily: "'Playfair Display', serif" }}>
-            Back To Home
-          </span> */}
-          <div className="text-center mb-5 w-full">
-            <h1
-              className="text-4xl sm:text-3xl font-bold mb-3 tracking-tight text-[#F5F5F5]"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              Edit Your Profile
-            </h1>
-            <p className="text-[10px] font-black tracking-[0.25em] text-[#A68966] uppercase">
-              Curating your craft coffee experience
-            </p>
-          </div>
+          <ArrowLeft size={22} className="mr-2" />
+          <span className="font-bold text-[14px]">Back to Profile</span>
         </Link>
+        <div className="text-center mb-10 w-full mt-4">
+          <h1
+            className="text-4xl md:text-5xl font-bold mb-3 tracking-tight text-[#3e2723]"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            Edit Your Profile
+          </h1>
+          <p className="text-[10px] font-black tracking-[0.25em] text-[#D46C11] uppercase">
+            Curating your craft coffee experience
+          </p>
+        </div>
 
         {/* Form Card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-[#121212] rounded-[40px] flex flex-col gap-5 p-6 border border-white/5 shadow-[0_24px_50px_-12px_rgba(0,0,0,0.8)]"
+          className="bg-white rounded-[40px] flex flex-col gap-6 p-8 border border-black/5 shadow-[0_4px_25px_rgba(0,0,0,0.03)]"
         >
 
           {/* Profile Photo Section */}
@@ -132,7 +130,7 @@ const EditProfile = () => {
             />
             <div
               onClick={() => fileInputRef.current?.click()}
-              className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#A68966]/20 relative group cursor-pointer"
+              className="w-24 h-24 rounded-full overflow-hidden border-[3px] border-[#FCF8F5] shadow-lg relative group cursor-pointer"
             >
               <img
                 src={user.imageUrl}
@@ -140,7 +138,7 @@ const EditProfile = () => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="text-[10px] font-bold uppercase tracking-wider">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-white">
                   Update
                 </span>
               </div>
@@ -148,20 +146,20 @@ const EditProfile = () => {
             <div className="flex gap-8">
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="text-[12px] font-bold text-[#A68966] hover:text-[#C4A47C] transition-colors uppercase tracking-wider"
+                className="text-[12px] font-bold text-[#D46C11] hover:text-[#B5590D] transition-colors uppercase tracking-wider"
               >
                 Change Photo
               </button>
-              <button className="text-[12px] font-bold text-white/30 hover:text-white/50 transition-colors uppercase tracking-wider">
+              <button className="text-[12px] font-bold text-[#A3A3A3] hover:text-[#555555] transition-colors uppercase tracking-wider">
                 Remove
               </button>
             </div>
           </div>
 
           {/* Inputs Section */}
-          <div className="flex flex-col gap-6" >
+          <div className="flex flex-col gap-6 mt-4" >
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-black uppercase tracking-[0.15em] text-[#A68966] ml-1">
+              <label className="text-[10px] font-black uppercase tracking-[0.15em] text-[#D46C11] ml-1">
                 Full Name
               </label>
               <div className="relative group">
@@ -171,13 +169,13 @@ const EditProfile = () => {
                   value={formData.fullName}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="w-full bg-[#1A1A1A] border border-white/5 rounded-2xl py-4 px-6 text-white text-base focus:outline-none focus:border-[#A68966]/30 focus:ring-1 focus:ring-[#A68966]/30 transition-all placeholder:text-white/10"
+                  className="w-full bg-[#F4F5F7] border border-transparent rounded-2xl py-4 px-6 text-[#0A0A0A] font-bold text-[15px] focus:outline-none focus:border-[#D46C11] focus:ring-1 focus:ring-[#D46C11]/30 transition-all placeholder:text-[#A3A3A3] placeholder:font-normal"
                 />
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-black uppercase tracking-[0.15em] text-[#A68966] ml-1">
+              <label className="text-[10px] font-black uppercase tracking-[0.15em] text-[#D46C11] ml-1">
                 Email Address (Read Only)
               </label>
               <div className="relative group">
@@ -185,16 +183,16 @@ const EditProfile = () => {
                   type="email"
                   value={user.primaryEmailAddress?.emailAddress}
                   readOnly
-                  className="w-full bg-[#1A1A1A]/40 border border-white/5 rounded-2xl py-4 px-6 text-white/30 text-base cursor-not-allowed outline-none"
+                  className="w-full bg-[#F4F5F7]/60 border border-transparent rounded-2xl py-4 px-6 text-[#7A7A7A] font-bold text-[15px] cursor-not-allowed outline-none"
                 />
-                <div className="absolute right-6 top-1/2 -translate-y-1/2 text-white/10">
+                <div className="absolute right-6 top-1/2 -translate-y-1/2 text-[#1E8E3E]">
                   <CheckCircle2 size={18} />
                 </div>
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-black uppercase tracking-[0.15em] text-[#A68966] ml-1">
+              <label className="text-[10px] font-black uppercase tracking-[0.15em] text-[#D46C11] ml-1">
                 Phone Number
               </label>
               <div className="relative group">
@@ -204,37 +202,37 @@ const EditProfile = () => {
                   value={formData.phoneNumber}
                   onChange={handleChange}
                   placeholder="+1 (555) 000-0000"
-                  className="w-full bg-[#1A1A1A] border border-white/5 rounded-2xl py-4 px-6 text-white text-base focus:outline-none focus:border-[#A68966]/30 focus:ring-1 focus:ring-[#A68966]/30 transition-all placeholder:text-white/10"
+                  className="w-full bg-[#F4F5F7] border border-transparent rounded-2xl py-4 px-6 text-[#0A0A0A] font-bold text-[15px] focus:outline-none focus:border-[#D46C11] focus:ring-1 focus:ring-[#D46C11]/30 transition-all placeholder:text-[#A3A3A3] placeholder:font-normal"
                 />
               </div>
             </div>
           </div>
 
           {/* Sync Status Button */}
-          <div className="flex justify-center">
-            <button className="flex items-center gap-3 px-6 py-2.5 bg-[#1A1A1A] rounded-full border border-white/5 opacity-80 hover:opacity-100 transition-opacity cursor-default">
-              <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
+          <div className="flex justify-center mt-2">
+            <button className="flex items-center gap-3 px-6 py-2.5 bg-[#FCF8F5] rounded-full border border-black/5 transition-opacity cursor-default">
+              <div className="w-2 h-2 rounded-full bg-[#1E8E3E] shadow-[0_0_8px_rgba(30,142,62,0.4)]"></div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#555555]">
                 Cloud Sync Active
               </span>
             </button>
           </div>
 
           {/* Actions */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 mt-2">
             <button
               onClick={handleSave}
               disabled={isSaving}
-              className="relative group overflow-hidden rounded-4xl h-12 disabled:opacity-50"
+              className="relative group overflow-hidden rounded-full h-14 disabled:opacity-50"
             >
-              <div className="absolute inset-0 bg-linear-to-r from-[#A6855B] to-[#735432] transition-transform duration-500 group-hover:scale-105"></div>
-              <span className="relative z-10 text-[13px] font-black uppercase tracking-widest text-white shadow-sm">
+              <div className="absolute inset-0 bg-[#D46C11] group-hover:bg-[#B5590D] transition-colors duration-300"></div>
+              <span className="relative z-10 text-[13px] font-black uppercase tracking-widest text-white shadow-sm flex items-center justify-center h-full">
                 {isSaving ? "Saving..." : "Save Changes"}
               </span>
             </button>
             <button
               onClick={() => navigate("/profile")}
-              className="rounded-4xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all h-12 text-[13px] font-black uppercase tracking-widest text-white/80"
+              className="rounded-full border-2 border-[#EAEAEA] bg-white hover:border-[#D46C11] transition-all h-14 text-[13px] font-black uppercase tracking-widest text-[#0A0A0A] flex items-center justify-center"
             >
               Cancel
             </button>
@@ -251,7 +249,7 @@ const EditProfile = () => {
             exit={{ opacity: 0, y: 20 }}
             className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 w-max"
           >
-            <div className="bg-[#A68966] text-white px-8 py-4 rounded-full shadow-2xl flex items-center gap-3">
+            <div className="bg-[#1E8E3E] text-white px-8 py-4 rounded-full shadow-2xl flex items-center gap-3">
               <CheckCircle2 size={20} />
               <span className="font-bold uppercase tracking-widest text-[10px]">
                 Profile Updated Successfully

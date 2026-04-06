@@ -43,7 +43,7 @@ const Checkout = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#F4F5F7] font-sans pb-20 pt-28">
+        <div className="min-h-screen bg-[#FCF8F5] font-sans pb-20 pt-28">
             <div className="max-w-[1100px] mx-auto px-5 sm:px-10">
                 <div className="flex flex-col lg:flex-row gap-10 xl:gap-14">
 

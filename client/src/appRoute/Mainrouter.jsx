@@ -14,11 +14,17 @@ import ReservationHistory from '../Pages/User/ReservationHistory'
 import Profile from '../Pages/User/Profile'
 import EditProfile from '../Pages/User/EditProfile'
 import ProtectedRoute from '../Components/User/Auth/ProtectedRoute'
+import AdminDashboard from '../Pages/Admin/AdminDashboard'
+import AdminOrders from '../Pages/Admin/AdminOrders'
 
 const MainRote = () => {
   return (
     <>
       <Routes>
+        {/* Admin Routes */}
+        <Route path='/admin' element={<AdminDashboard />} />
+        <Route path='/admin/orders' element={<AdminOrders />} />
+
         <Route path='/' element={<Home />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/about' element={<About />} />

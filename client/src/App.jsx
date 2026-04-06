@@ -1,23 +1,16 @@
 import React from 'react'
 import Mainrouter from './appRoute/Mainrouter'
-import Navbar from './Common/User/Navbar'
-import Footer from './Common/User/Footer'
-import ScrollToTop from './Common/User/ScrollToTop'
 import { CartProvider } from './Context/CartContext'
 import { AuthProvider } from './Context/AuthContext'
-import LoginModal from './Components/User/Auth/LoginModal'
+import LayoutWrapper from './appRoute/LayoutWrapper'
 
 const App = () => {
   return (
     <AuthProvider>
       <CartProvider>
-        <div>
-          <ScrollToTop />
-          <Navbar />
+        <LayoutWrapper>
           <Mainrouter />
-          <Footer />
-          <LoginModal />
-        </div>
+        </LayoutWrapper>
       </CartProvider>
     </AuthProvider>
   )
