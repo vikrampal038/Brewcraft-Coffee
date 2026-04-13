@@ -3,22 +3,11 @@ import AdminLayout from '../../Common/Admin/AdminLayout';
 import { Eye, Edit2, Calendar, Download, Package, Coffee, DollarSign, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+import { adminOrderStats, adminOrdersList } from '../../Data/AdminData';
+
 const AdminOrders = () => {
     const [activeTab, setActiveTab] = useState('All Orders');
     const tabs = ['All Orders', 'Pending', 'Preparing', 'Completed'];
-
-    const stats = [
-        { title: "Today's Orders", value: "42", trend: "+5% vs yesterday", trendUp: true, icon: Package, iconColor: "text-[#D46C11]" },
-        { title: "Pending Prep", value: "12", trend: "High volume", trendUp: false, icon: Coffee, iconColor: "text-[#D46C11]", trendColor: "text-[#DC2626]", trendBg: "bg-[#FEE2E2]" },
-        { title: "Total Revenue", value: "$1,240.50", trend: "+10% vs avg", trendUp: true, icon: DollarSign, iconColor: "text-[#10B981]", trendColor: "text-[#10B981]", trendBg: "bg-[#D1FAE5]" }
-    ];
-
-    const orders = [
-        { id: '#BB-8921', customer: 'James Wilson', email: 'james.w@email.com', items: '1x Oat Latte, 2x Espresso', total: '$18.50', status: 'PENDING', statusColor: 'bg-[#FEF3C7] text-[#D97706]' },
-        { id: '#BB-8920', customer: 'Sarah Miller', email: 'smiller@mail.org', items: '2x Cappuccino, 1x Croissant', total: '$24.00', status: 'PREPARING', statusColor: 'bg-[#FFEDD5] text-[#EA580C]' },
-        { id: '#BB-8919', customer: 'Elena Rodriguez', email: 'elena_rod@test.com', items: '1x Pour Over, 1x Blueberry Muffin', total: '$12.75', status: 'COMPLETED', statusColor: 'bg-[#D1FAE5] text-[#059669]' },
-        { id: '#BB-8918', customer: 'Marcus Thorne', email: 'mthorne@company.com', items: '4x Espresso Shot', total: '$14.00', status: 'COMPLETED', statusColor: 'bg-[#D1FAE5] text-[#059669]' },
-    ];
 
     return (
         <AdminLayout title="Orders Management" breadcrumb="Admin / Orders">
@@ -26,7 +15,7 @@ const AdminOrders = () => {
                 
                 {/* Stats Row */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {stats.map((stat, idx) => (
+                    {adminOrderStats.map((stat, idx) => (
                         <motion.div 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -96,7 +85,7 @@ const AdminOrders = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {orders.map((order, index) => (
+                                {adminOrdersList.map((order, index) => (
                                     <tr key={index} className="border-b border-[#F9F9F9] last:border-0 hover:bg-[#FAFAFA] transition-colors">
                                         <td className="py-5 px-6 text-[14px] font-black text-[#D46C11]">{order.id}</td>
                                         <td className="py-5 px-6">

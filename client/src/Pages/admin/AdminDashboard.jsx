@@ -3,23 +3,9 @@ import AdminLayout from '../../Common/Admin/AdminLayout';
 import { FileText, Calendar, DollarSign, Users, ChevronDown, MoreHorizontal, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const AdminDashboard = () => {
-    // Dummy Data
-    const statCards = [
-        { title: 'Total Orders', value: '1,284', trend: '+5.2% vs last week', trendUp: true, icon: FileText },
-        { title: 'Active Reservations', value: '24', trend: '+2.1% from today', trendUp: true, icon: Calendar },
-        { title: 'Revenue', value: '$12,450.00', trend: '+12.5% this month', trendUp: true, icon: DollarSign },
-        { title: 'Subscribers', value: '892', trend: '+14 new today', trendUp: true, icon: Users, trendColor: 'text-[#D46C11]' }
-    ];
+import { adminStatCards, adminRecentOrders } from '../../Data/AdminData';
 
-    const recentOrders = [
-        { id: '#ORD-7721', customer: 'Liam Hudson', product: 'Colombian Whole Bean 1kg', date: 'Oct 12, 2023', amount: '$34.50', status: 'DELIVERED' },
-        { id: '#ORD-7722', customer: 'Elena Petrova', product: 'Ceramic Coffee Set', date: 'Oct 12, 2023', amount: '$120.00', status: 'PENDING' },
-        { id: '#ORD-7723', customer: 'Michael Chen', product: 'Espresso Roast 500g', date: 'Oct 11, 2023', amount: '$22.00', status: 'DELIVERED' },
-        { id: '#ORD-7724', customer: 'Sarah Jenkins', product: 'Pour Over Brewer', date: 'Oct 11, 2023', amount: '$45.00', status: 'DELIVERED' },
-        { id: '#ORD-7725', customer: 'David O\'Connor', product: 'Ethiopian Yirgacheffe 1kg', date: 'Oct 10, 2023', amount: '$38.50', status: 'PENDING' },
-        { id: '#ORD-7726', customer: 'Emma Watson', product: 'Cold Brew Pitcher', date: 'Oct 10, 2023', amount: '$29.99', status: 'DELIVERED' }
-    ];
+const AdminDashboard = () => {
 
     return (
         <AdminLayout>
@@ -27,7 +13,7 @@ const AdminDashboard = () => {
                 
                 {/* Stats Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {statCards.map((stat, idx) => (
+                    {adminStatCards.map((stat, idx) => (
                         <motion.div 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -164,7 +150,7 @@ const AdminDashboard = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {recentOrders.map((order, index) => (
+                                {adminRecentOrders.map((order, index) => (
                                     <tr key={index} className="border-b border-[#F9F9F9] last:border-0 hover:bg-[#FAFAFA] transition-colors">
                                         <td className="py-5 text-[14px] font-black text-[#111111]">{order.id}</td>
                                         <td className="py-5 flex items-center gap-3">

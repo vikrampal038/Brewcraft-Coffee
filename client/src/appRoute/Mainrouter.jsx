@@ -16,6 +16,8 @@ import EditProfile from '../Pages/User/EditProfile'
 import ProtectedRoute from '../Components/User/Auth/ProtectedRoute'
 import AdminDashboard from '../Pages/Admin/AdminDashboard'
 import AdminOrders from '../Pages/Admin/AdminOrders'
+import AdminReservations from '../Pages/admin/AdminReservations'
+import AdminProducts from '../Pages/Admin/AdminProducts'
 
 const MainRote = () => {
   return (
@@ -23,7 +25,9 @@ const MainRote = () => {
       <Routes>
         {/* Admin Routes */}
         <Route path='/admin' element={<AdminDashboard />} />
+        <Route path='/admin/products' element={<AdminProducts />} />
         <Route path='/admin/orders' element={<AdminOrders />} />
+        <Route path='/admin/reservations' element={<AdminReservations />} />
 
         <Route path='/' element={<Home />} />
         <Route path='/contact' element={<Contact />} />
